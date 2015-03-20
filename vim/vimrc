@@ -1,0 +1,51 @@
+" enable colorschemes
+colorscheme vividchalk
+syntax enable
+
+" when showing a TAB, display 4 spaces
+set tabstop=4
+" number of spaces in tab when editing
+set softtabstop=4
+" tabs are spaces
+set expandtab
+
+" show line numbers
+set number
+" show last command in Vim
+set showcmd
+" highlight current line
+set cursorline
+" load filetype specific indent files in .vim/indent
+filetype indent on
+
+" visual autocomplete when tabbing in command mode
+set wildmenu
+
+" redraw only when we need to
+set lazyredraw
+
+" highlight start and end paranthesis-like characters
+set showmatch
+
+" search as chars are entered
+set incsearch
+" highlight matches
+set hlsearch
+" turn off search highlight with ,<space> cmd
+nnoremap ,<space> :nohlsearch<CR>
+
+" enable folding
+set foldenable
+" open most folds by default
+set foldlevelstart=10
+" 10 nested fold max
+set foldnestmax=10
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" remap move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
