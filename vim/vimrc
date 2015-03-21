@@ -1,45 +1,81 @@
-" enable colorschemes
+" ---------------------------------------------------
+" Must have options
+set nocompatible
+set hidden
+syntax on
 colorscheme vividchalk
-syntax enable
 
-" when showing a TAB, display 4 spaces
-set tabstop=4
-" number of spaces in tab when editing
-set softtabstop=4
-" tabs are spaces
-set expandtab
-
-" show line numbers
-set number
-" show last command in Vim
-set showcmd
-" highlight current line
-set cursorline
-" load filetype specific indent files in .vim/indent
-filetype indent on
+" load filetype specific indent files in .vim/ftplugin
+filetype plugin indent on
 
 " visual autocomplete when tabbing in command mode
 set wildmenu
 
-" redraw only when we need to
-set lazyredraw
+" show last command in Vim
+set showcmd
 
-" highlight start and end paranthesis-like characters
-set showmatch
+
+" ---------------------------------------------------
+" Usability options
+
+" case insensitive search
+set ignorecase
+set smartcase
 
 " search as chars are entered
 set incsearch
 " highlight matches
 set hlsearch
-" turn off search highlight with ,<space> cmd
-nnoremap ,<space> :nohlsearch<CR>
 
-" enable folding
-set foldenable
-" open most folds by default
-set foldlevelstart=10
-" 10 nested fold max
-set foldnestmax=10
+set autoindent
+
+" allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+" stop certain movements from always going to first char of line
+set nostartofline
+
+" diplay cursor position in bottom of screen
+set ruler
+
+" always display status line
+set laststatus=2
+
+" instead of failing on unsaved changes, ask pls
+set confirm
+
+" no more beeping
+set visualbell
+set t_vb=
+
+" enable use of mouse for all modes
+set mouse=a
+
+" set command window height to 2 lines
+set cmdheight=2
+
+" line numbers
+set number
+
+" quickly time out on keycodes, but never time out on mappings
+set notimeout ttimeout ttimeoutlen=200
+
+" use <F11> to toggle between 'paste' and 'nopaste', allowing pasting
+" without setting indenting wrong
+set pastetoggle=<F11>
+
+
+" ---------------------------------------------------
+" Indentation options
+
+" use 4 spaces instead of tabs
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+
+" ---------------------------------------------------
+" Mappings
 
 " move vertically by visual line
 nnoremap j gj
@@ -47,5 +83,10 @@ nnoremap k gk
 
 " remap move to beginning/end of line
 nnoremap B ^
+
+" map Y to yank until EOL
+map Y y$
 nnoremap E $
 
+" turn off search highlight with ,<space> cmd
+nnoremap ,<space> :nohlsearch<CR>
