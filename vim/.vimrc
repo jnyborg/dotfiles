@@ -3,16 +3,18 @@
 set nocompatible
 set hidden
 syntax on
-colorscheme vividchalk
+set encoding=utf-8
 
 " load filetype specific indent files in .vim/ftplugin
-filetype plugin indent on
+filetype indent plugin on
 
 " visual autocomplete when tabbing in command mode
 set wildmenu
 
 " show last command in Vim
 set showcmd
+
+colorscheme vividchalk
 
 
 " ---------------------------------------------------
@@ -24,6 +26,7 @@ set smartcase
 
 " search as chars are entered
 set incsearch
+
 " highlight matches
 set hlsearch
 
@@ -60,10 +63,11 @@ set number
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 
-" use <F11> to toggle between 'paste' and 'nopaste', allowing pasting
-" without setting indenting wrong
-set pastetoggle=<F11>
+" show matching braces
+set showmatch
 
+" show a visual line under the cursors current line
+"set cursorline
 
 " ---------------------------------------------------
 " Indentation options
@@ -77,16 +81,13 @@ set expandtab
 " ---------------------------------------------------
 " Mappings
 
-" move vertically by visual line
-nnoremap j gj
-nnoremap k gk
+" Use jk instead of esc to change modes
+inoremap jk <ESC>
 
-" remap move to beginning/end of line
-nnoremap B ^
+let mapleader = "\<Space>"
 
-" map Y to yank until EOL
-map Y y$
-nnoremap E $
+" --------------------------------------------------
+"  Language specific
 
-" turn off search highlight with ,<space> cmd
-nnoremap ,<space> :nohlsearch<CR>
+"  enable all Python syntax highlight features
+let python_highlight_all = 1
