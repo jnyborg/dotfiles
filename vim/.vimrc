@@ -2,12 +2,11 @@ execute pathogen#infect()
 set nocompatible
 syntax on
 filetype plugin indent on
-colorscheme vividchalk
-set number
+set relativenumber
+colorscheme cobalt2 
 set wildmenu " auto completion
 set showcmd " show hints for your current command
 set hidden " allows hiding current buffer, makes it easier to switch between files
-
 
 " ----- Search options -----
 " Use case insensitive search, except when using capital letters
@@ -17,7 +16,6 @@ set smartcase
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
-
 
 " ----- Usability options -----
 " Allow backspacing over autoindent, line breaks and start of insert action
@@ -33,10 +31,6 @@ set nostartofline
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
 set cmdheight=2
-
-" Instead of failing a command because of unsaved changes, instead raise a
-" dialogue asking if you wish to save changed files.
-set confirm
 
 " Use visual bell instead of beeping when doing something wrong
 set visualbell
@@ -77,3 +71,9 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+
+" Go to previous change location with g, and g-
+nnoremap g- g;
+
+" Exit mode with jk
+inoremap jj <Esc>
