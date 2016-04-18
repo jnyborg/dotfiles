@@ -72,8 +72,5 @@ map Y y$
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
-" Go to previous change location with g, and g-
-nnoremap g- g;
-
 " Exit mode with jk
 inoremap jj <Esc>
