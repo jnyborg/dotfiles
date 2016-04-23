@@ -63,14 +63,10 @@ set expandtab       " Expand TABs to spaces
 " ----- Key bindings -----
 " Make Shift-Tab work in insert mode
 inoremap <S-Tab> <C-d> 
-
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
-map Y y$
  
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
 " Exit mode with jk
-inoremap jj <Esc>
+inoremap jk <Esc>
