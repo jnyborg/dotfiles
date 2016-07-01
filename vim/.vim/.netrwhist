@@ -1,4 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/jnyborg/git/webtek-handins/.git'
 let g:netrw_dirhist_2='/Users/jnyborg/.emacs.d'
+let g:netrw_dirhist_3='/home/joachim/git/watchmedier-top-news'
+let g:netrw_dirhist_4='/home/joachim/git/watchmedier-top-news/src'
+let g:netrw_dirhist_5='/home/joachim/git/watchmedier-top-news/src/main'
+let g:netrw_dirhist_6='/home/joachim/git/watchmedier-top-news/src/main/scala'
+let g:netrw_dirhist_7='/home/joachim/git/watchmedier-top-news/src/main'
+let g:netrw_dirhist_8='/home/joachim/git/watchmedier-top-news/src'

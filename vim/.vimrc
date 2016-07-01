@@ -2,13 +2,25 @@ execute pathogen#infect()
 set nocompatible
 syntax on
 filetype plugin indent on
-set relativenumber
 colorscheme cobalt2 
 set wildmenu " auto completion
 set showcmd " show hints for your current command
 set hidden " allows hiding current buffer, makes it easier to switch between files
 
-" ----- Search options -----
+"""""""""""""""""""""""""""""
+" gVim Options
+"""""""""""""""""""""""""""""
+
+set guioptions-=T " remove toolbar
+set guioptions-=r " remove scroll bar
+set guioptions-=L " remove scroll bar
+set guioptions-=m " remove menu bar
+set guifont=Monospace\ 12
+
+"""""""""""""""""""""""""""""
+" Search options
+"""""""""""""""""""""""""""""
+
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
@@ -17,7 +29,10 @@ set smartcase
 " mapping of <C-L> below)
 set hlsearch
 
-" ----- Usability options -----
+"""""""""""""""""""""""""""""
+" Usability options
+"""""""""""""""""""""""""""""
+
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
  
@@ -46,6 +61,13 @@ set confirm
 " line of a window
 set ruler
 
+"""""""""""""""""""""""""""""
+" Line number and cursorline
+"""""""""""""""""""""""""""""
+set nu
+set relativenumber
+set cursorline
+
 
 " ----- Indentation settings -----
 set tabstop=4       " The width of a TAB is set to 4.
@@ -60,7 +82,10 @@ set softtabstop=4   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 
 
-" ----- Key bindings -----
+"""""""""""""""""""""""""""""
+" Key bindings
+"""""""""""""""""""""""""""""
+"
 " Make Shift-Tab work in insert mode
 inoremap <S-Tab> <C-d> 
  
@@ -74,3 +99,22 @@ inoremap jk <Esc>
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
+
+" Make space the leader key
+nmap <space> <leader>
+
+"""""""""""""""""""""""""""""
+" NERDTree
+"""""""""""""""""""""""""""""
+
+" NERDTree toggle on <leader>n
+nnoremap <leader>. :NERDTreeToggle<CR>
+
+" Set size for NERDTree window
+:let g:NERDTreeWinSize=40
+
+" Autostart NERDTree when vim starts
+autocmd VimEnter * NERDTree | wincmd p
+
+" Close vim when Nerdtree only window left
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
