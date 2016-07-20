@@ -1,7 +1,31 @@
-execute pathogen#infect()
-set nocompatible
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" My plugins here
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-sensible'
+
+
+
+call vundle#end()            
+filetype plugin indent on   
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" end Vundle plugin stuff 
+
 syntax on
-filetype plugin indent on
 colorscheme cobalt2 
 set wildmenu " auto completion
 set showcmd " show hints for your current command
@@ -44,7 +68,7 @@ set autoindent
 set nostartofline
 
 " Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
+" press <Enter> to continue
 set cmdheight=2
 
 " Use visual bell instead of beeping when doing something wrong
@@ -107,7 +131,7 @@ nmap <space> <leader>
 " NERDTree
 """""""""""""""""""""""""""""
 
-" NERDTree toggle on <leader>n
+" NERDTree toggle on <leader>.
 nnoremap <leader>. :NERDTreeToggle<CR>
 
 " Set size for NERDTree window
