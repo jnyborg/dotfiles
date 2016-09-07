@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible " be iMproved, required
+filetype off " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -10,32 +10,80 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-sensible'
+Plugin 'chriskempson/base16-vim'
+Plugin 'jez/vim-better-sml'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finding files
+Plugin 'airblade/vim-gitgutter' " git plugin vim airline
+Plugin 'Raimondi/delimitMate' " auto match delimiters
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
 
-call vundle#end()            
-filetype plugin indent on   
+call vundle#end()
+filetype plugin indent on
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
 """" end Vundle plugin stuff """""
 
 syntax on
 set wildmenu " auto completion
 set showcmd " show hints for your current command
 set hidden " allows hiding current buffer, makes it easier to switch between files
+" stop wrapping line when editing sml files
+setlocal textwidth=0
+
+"""""""""""""""""""""""""""""""
+" bling / vim airline settings
+"""""""""""""""""""""""""""""""
+set background=dark
+
+" Set the colorscheme
+colorscheme solarized
+
+" remove window split chars
+set fillchars=""
+
+" Always show statusbar
+set laststatus=2
+
+" Fancy arrow symbols, requires a patched font
+" To install a patched font, run over to
+"     https://github.com/abertsch/Menlo-for-Powerline
+" download all the .ttf files, double-click on them and click "Install"
+" Finally, uncomment the next line
+let g:airline_powerline_fonts = 1
+
+" Show PASTE if in paste mode
+let g:airline_detect_paste=1
+
+" Show airline for tabs too
+let g:airline#extensions#tabline#enabled = 1
+
+" In vim-airline, only display "hunks" if the diff is non-zero
+let g:airline#extensions#hunks#non_zero_only = 1
+
+" uncomment if console not configured for solarized
+" let g:solarized_termcolors=256
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+"""""""""""""""""""""""""""""
+" NeoVim
+"""""""""""""""""""""""""""""
+tnoremap <Esc> <C-\><C-n> " make esc work in terminal mode
 
 """""""""""""""""""""""""""""
 " gVim Options
 """""""""""""""""""""""""""""
-
-set guioptions-=T " remove toolbar
-set guioptions-=r " remove scroll bar
-set guioptions-=L " remove scroll bar
-set guioptions-=m " remove menu bar
+if has('gui_running')
+    set guioptions-=T " remove toolbar
+    set guioptions-=r " remove scroll bar
+    set guioptions-=L " remove scroll bar
+    set guioptions-=m " remove menu bar
+    "colorscheme base16-default-dark
+endif
 
 """""""""""""""""""""""""""""
 " Search options
@@ -49,17 +97,21 @@ set smartcase
 " mapping of <C-L> below)
 set hlsearch
 
+" Show where search pattern matches while typing
+set incsearch
+
+
 """""""""""""""""""""""""""""
 " Usability options
 """""""""""""""""""""""""""""
 
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
- 
+
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
- 
+
 " Prevent the cursor from changing the current column when jumping to other lines within the window.
 set nostartofline
 
@@ -89,26 +141,42 @@ set relativenumber
 set cursorline
 
 
-" ----- Indentation settings -----
-set tabstop=4       " The width of a TAB is set to 4.
-                    " Still it is a \t. It is just that
-                    " Vim will interpret it to be having
-                    " a width of 4.
+"""""""""""""""""""""""""""""
+" Indentation settings
+"""""""""""""""""""""""""""""
 
-set shiftwidth=4    " Indents will have a width of 4
+" Use spaces instead of tabs
+set expandtab
 
-set softtabstop=4   " Sets the number of columns for a TAB
+" Smart tabs
+set smarttab
 
-set expandtab       " Expand TABs to spaces
+" 1 tab = 4 spaces
+set shiftwidth=4
+set tabstop=4
 
+" Spaces in tab when editing
+set softtabstop=4
+
+" Auto indent
+set ai
+
+" Smart indent
+set si
+
+" Wrap lines
+set wrap
+
+" Auto indenting also on copy
+set autoindent
 
 """""""""""""""""""""""""""""
 " Key bindings
 """""""""""""""""""""""""""""
 "
 " Make Shift-Tab work in insert mode
-inoremap <S-Tab> <C-d> 
- 
+inoremap <S-Tab> <C-d>
+
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
@@ -128,13 +196,26 @@ nmap <space> <leader>
 """""""""""""""""""""""""""""
 
 " NERDTree toggle on <leader>.
-nnoremap <leader>. :NERDTreeToggle<CR>
+" nnoremap <leader>. :NERDTreeToggle<CR>
+map <Leader> <plug>NERDTreeTabsToggle<CR>
+
 
 " Set size for NERDTree window
-:let g:NERDTreeWinSize=40
+let g:NERDTreeWinSize=40
 
 " Autostart NERDTree when vim starts
 autocmd VimEnter * NERDTree | wincmd p
 
 " Close vim when Nerdtree only window left
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+"""""""""""""""""""""""""""""""
+" scrooloose/syntastic settings
+"""""""""""""""""""""""""""""""
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+augroup mySyntastic
+  au!
+  au FileType tex let b:syntastic_mode = "passive"
+augroup END
