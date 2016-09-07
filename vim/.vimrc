@@ -12,8 +12,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-sensible'
 
-
-
 call vundle#end()            
 filetype plugin indent on   
 
@@ -23,10 +21,9 @@ filetype plugin indent on
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" end Vundle plugin stuff 
+"""" end Vundle plugin stuff """""
 
 syntax on
-colorscheme cobalt2 
 set wildmenu " auto completion
 set showcmd " show hints for your current command
 set hidden " allows hiding current buffer, makes it easier to switch between files
@@ -39,7 +36,6 @@ set guioptions-=T " remove toolbar
 set guioptions-=r " remove scroll bar
 set guioptions-=L " remove scroll bar
 set guioptions-=m " remove menu bar
-set guifont=Monospace\ 12
 
 """""""""""""""""""""""""""""
 " Search options
