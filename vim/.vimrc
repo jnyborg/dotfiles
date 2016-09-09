@@ -10,17 +10,18 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'chriskempson/base16-vim'
-Plugin 'jez/vim-better-sml'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/syntastic'
+Plugin 'jez/vim-better-sml'
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finding files
 Plugin 'airblade/vim-gitgutter' " git plugin vim airline
 Plugin 'Raimondi/delimitMate' " auto match delimiters
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
+Plugin 'chriskempson/base16-vim'
+Bundle 'cypok/vim-sml'
 
 call vundle#end()
 filetype plugin indent on
@@ -69,10 +70,13 @@ let g:airline#extensions#hunks#non_zero_only = 1
 
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+
 """""""""""""""""""""""""""""
 " NeoVim
 """""""""""""""""""""""""""""
-tnoremap <Esc> <C-\><C-n> " make esc work in terminal mode
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n> " make esc work in terminal mode
+endif
 
 """""""""""""""""""""""""""""
 " gVim Options
@@ -136,7 +140,7 @@ set ruler
 """""""""""""""""""""""""""""
 " Line number and cursorline
 """""""""""""""""""""""""""""
-set nu
+set number
 set relativenumber
 set cursorline
 
@@ -196,18 +200,10 @@ nmap <space> <leader>
 """""""""""""""""""""""""""""
 
 " NERDTree toggle on <leader>.
-" nnoremap <leader>. :NERDTreeToggle<CR>
-map <Leader> <plug>NERDTreeTabsToggle<CR>
+nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
 
-
-" Set size for NERDTree window
-let g:NERDTreeWinSize=40
-
-" Autostart NERDTree when vim starts
-autocmd VimEnter * NERDTree | wincmd p
-
-" Close vim when Nerdtree only window left
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" To have NERDTree always open on startup
+let g:nerdtree_tabs_open_on_console_startup = 1
 
 
 """""""""""""""""""""""""""""""
@@ -219,3 +215,12 @@ augroup mySyntastic
   au!
   au FileType tex let b:syntastic_mode = "passive"
 augroup END
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
