@@ -65,6 +65,7 @@ let g:airline#extensions#tabline#enabled = 1
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
 
+
 " uncomment if console not configured for solarized
 " let g:solarized_termcolors=256
 
@@ -194,6 +195,8 @@ map Y y$
 
 " Make space the leader key
 nmap <space> <leader>
+
+" Change tabs using 
 
 """""""""""""""""""""""""""""
 " NERDTree

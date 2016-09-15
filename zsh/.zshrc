@@ -2,12 +2,12 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jnyborg/.oh-my-zsh
+export ZSH=/home/jnyborg/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Prompt username
 DEFAULT_USER=jnyborg
@@ -54,7 +54,7 @@ DEFAULT_USER=jnyborg
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew docker zsh-autosuggestions)
+plugins=(git docker zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,13 +66,6 @@ bindkey '^ ' autosuggest-accept
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -88,19 +81,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Autojump 
-  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-
-# zsh-syntax-highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# docker
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/jnyborg/.docker/machine/machines/default"
-export DOCKER_MACHINE_NAME="default"
-
-# sml
-export PATH=/usr/local/Cellar/smlnj/110.74/libexec/bin:$PATH
-
+source /usr/share/autojump/autojump.sh
+eval `dircolors ~/.dir_colors`
+export PUSH_SECRET=mySecret
+export PEYTZ_KEY=2sSyT_xKaTNuGJoe5eLS
