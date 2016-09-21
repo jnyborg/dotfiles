@@ -23,8 +23,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'chriskempson/base16-vim'
 Plugin 'joshdick/onedark.vim'
-Plugin 'ustinmk/vim-syntax-extra'
 Plugin 'junegunn/vim-easy-align'
+Bundle 'justinmk/vim-syntax-extra'
 Bundle 'cypok/vim-sml'
 
 
