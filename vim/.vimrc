@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -21,7 +22,11 @@ Plugin 'Raimondi/delimitMate' " auto match delimiters
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'chriskempson/base16-vim'
+Plugin 'joshdick/onedark.vim'
+Plugin 'ustinmk/vim-syntax-extra'
+Plugin 'junegunn/vim-easy-align'
 Bundle 'cypok/vim-sml'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -41,7 +46,11 @@ setlocal textwidth=0
 set background=dark
 
 " Set the colorscheme
-colorscheme solarized
+" colorscheme solarized
+let base16colorspace=256
+" colorscheme base16-solarized-dark
+" colorscheme base16-tomorrow-night
+colorscheme onedark
 
 " remove window split chars
 set fillchars=""
@@ -65,9 +74,6 @@ let g:airline#extensions#tabline#enabled = 1
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
 
-" uncomment if console not configured for solarized
-" let g:solarized_termcolors=256
-
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
@@ -86,7 +92,8 @@ if has('gui_running')
     set guioptions-=r " remove scroll bar
     set guioptions-=L " remove scroll bar
     set guioptions-=m " remove menu bar
-    "colorscheme base16-default-dark
+    set guifont=Menlo\ for\ Powerline:h14
+    set linespace=5
 endif
 
 """""""""""""""""""""""""""""
@@ -195,6 +202,12 @@ map Y y$
 " Make space the leader key
 nmap <space> <leader>
 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+"
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 """""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""
@@ -214,6 +227,7 @@ let g:syntastic_warning_symbol = "▲"
 augroup mySyntastic
   au!
   au FileType tex let b:syntastic_mode = "passive"
+  au FileType lex let b:syntastic_mode = "passive"
 augroup END
 
 set statusline+=%#warningmsg#
