@@ -83,5 +83,3 @@ bindkey '^ ' autosuggest-accept
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /usr/share/autojump/autojump.sh
 eval `dircolors ~/.dir_colors`
-export PUSH_SECRET=mySecret
-export PEYTZ_KEY=2sSyT_xKaTNuGJoe5eLS
