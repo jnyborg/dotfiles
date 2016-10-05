@@ -14,17 +14,17 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'scrooloose/syntastic'
 Plugin 'jez/vim-better-sml'
+Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finding files
 Plugin 'airblade/vim-gitgutter' " git plugin vim airline
 Plugin 'Raimondi/delimitMate' " auto match delimiters
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'W0ng/vim-hybrid'
 Plugin 'tomasr/molokai'
 Plugin 'chriskempson/base16-vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'junegunn/vim-easy-align'
-Bundle 'justinmk/vim-syntax-extra'
 Bundle 'cypok/vim-sml'
 
 
@@ -43,14 +43,14 @@ setlocal textwidth=0
 """""""""""""""""""""""""""""""
 " bling / vim airline settings
 """""""""""""""""""""""""""""""
-set background=dark
 
+set background=dark
 " Set the colorscheme
 " colorscheme solarized
 let base16colorspace=256
 " colorscheme base16-solarized-dark
-" colorscheme base16-tomorrow-night
-colorscheme onedark
+colorscheme base16-default-dark
+
 
 " remove window split chars
 set fillchars=""
@@ -77,6 +77,10 @@ let g:airline#extensions#hunks#non_zero_only = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+" sml highlighting for .grm file
+autocmd BufNewFile,BufRead *.grm   set syntax=sml
+
+
 """""""""""""""""""""""""""""
 " NeoVim
 """""""""""""""""""""""""""""
@@ -92,7 +96,7 @@ if has('gui_running')
     set guioptions-=r " remove scroll bar
     set guioptions-=L " remove scroll bar
     set guioptions-=m " remove menu bar
-    set guifont=Menlo\ for\ Powerline:h14
+    set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h14
     set linespace=5
 endif
 
@@ -224,11 +228,8 @@ let g:nerdtree_tabs_open_on_console_startup = 1
 """""""""""""""""""""""""""""""
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
-augroup mySyntastic
-  au!
-  au FileType tex let b:syntastic_mode = "passive"
-  au FileType lex let b:syntastic_mode = "passive"
-augroup END
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -236,5 +237,5 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
