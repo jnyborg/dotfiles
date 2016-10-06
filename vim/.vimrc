@@ -20,12 +20,8 @@ Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finding files
 Plugin 'airblade/vim-gitgutter' " git plugin vim airline
 Plugin 'Raimondi/delimitMate' " auto match delimiters
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'W0ng/vim-hybrid'
-Plugin 'tomasr/molokai'
 Plugin 'chriskempson/base16-vim'
-Plugin 'joshdick/onedark.vim'
 Plugin 'junegunn/vim-easy-align'
-Bundle 'cypok/vim-sml'
 
 
 call vundle#end()
@@ -49,7 +45,7 @@ set background=dark
 " colorscheme solarized
 let base16colorspace=256
 " colorscheme base16-solarized-dark
-colorscheme base16-default-dark
+colorscheme base16-solarized-dark
 
 
 " remove window split chars
@@ -98,6 +94,18 @@ if has('gui_running')
     set guioptions-=m " remove menu bar
     set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h14
     set linespace=5
+    " Mac: cmd + num to change tabs ala chrome
+    " http://vimcasts.org/episodes/working-with-tabs/
+    map <D-1> 1gt
+    map <D-2> 2gt
+    map <D-3> 3gt
+    map <D-4> 4gt
+    map <D-5> 5gt
+    map <D-6> 6gt
+    map <D-7> 7gt
+    map <D-8> 8gt
+    map <D-9> 9gt
+    map <D-0> :tablast<CR>]
 endif
 
 """""""""""""""""""""""""""""
@@ -212,6 +220,7 @@ xmap ga <Plug>(EasyAlign)
 " " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+
 """""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""
@@ -223,19 +232,5 @@ nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 1
 
 
-"""""""""""""""""""""""""""""""
-" scrooloose/syntastic settings
-"""""""""""""""""""""""""""""""
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
