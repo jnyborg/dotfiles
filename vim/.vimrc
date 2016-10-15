@@ -22,6 +22,7 @@ Plugin 'Raimondi/delimitMate' " auto match delimiters
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'Valloric/YouCompleteMe'
 
 
 call vundle#end()
@@ -34,18 +35,15 @@ set wildmenu " auto completion
 set showcmd " show hints for your current command
 set hidden " allows hiding current buffer, makes it easier to switch between files
 " stop wrapping line when editing sml files
-setlocal textwidth=0
+set textwidth=0
 
 """""""""""""""""""""""""""""""
 " bling / vim airline settings
 """""""""""""""""""""""""""""""
 
-set background=dark
-" Set the colorscheme
-" colorscheme solarized
-let base16colorspace=256
+" let base16colorspace=256
 " colorscheme base16-solarized-dark
-colorscheme base16-solarized-dark
+" colorscheme base16-solarized-light
 
 
 " remove window split chars
@@ -88,6 +86,10 @@ endif
 " gVim Options
 """""""""""""""""""""""""""""
 if has('gui_running')
+    set background=dark
+    " Set the colorscheme
+    colorscheme solarized
+    let g:solarized_termcolors=256
     set guioptions-=T " remove toolbar
     set guioptions-=r " remove scroll bar
     set guioptions-=L " remove scroll bar
