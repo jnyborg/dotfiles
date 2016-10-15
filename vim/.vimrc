@@ -8,12 +8,12 @@ call vundle#begin()
 " My plugins here
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'jez/vim-better-sml'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finding files
@@ -21,83 +21,46 @@ Plugin 'airblade/vim-gitgutter' " git plugin vim airline
 Plugin 'Raimondi/delimitMate' " auto match delimiters
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
+Plugin 'tomasr/molokai'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'Valloric/YouCompleteMe'
 
 
 call vundle#end()
 filetype plugin indent on
-
 """" end Vundle plugin stuff """""
 
-syntax on
-set wildmenu " auto completion
-set showcmd " show hints for your current command
-set hidden " allows hiding current buffer, makes it easier to switch between files
-" stop wrapping line when editing sml files
-set textwidth=0
 
 """""""""""""""""""""""""""""""
 " bling / vim airline settings
 """""""""""""""""""""""""""""""
-
-" let base16colorspace=256
-" colorscheme base16-solarized-dark
-" colorscheme base16-solarized-light
-
-
-" remove window split chars
-set fillchars=""
+syntax on
+set background=dark
+let g:airline_detect_paste=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline_theme='molokai'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 " Always show statusbar
 set laststatus=2
 
-" Fancy arrow symbols, requires a patched font
-" To install a patched font, run over to
-"     https://github.com/abertsch/Menlo-for-Powerline
-" download all the .ttf files, double-click on them and click "Install"
-" Finally, uncomment the next line
-let g:airline_powerline_fonts = 1
-
-" Show PASTE if in paste mode
-let g:airline_detect_paste=1
-
-" Show airline for tabs too
-let g:airline#extensions#tabline#enabled = 1
-
-" In vim-airline, only display "hunks" if the diff is non-zero
-let g:airline#extensions#hunks#non_zero_only = 1
-
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
 " sml highlighting for .grm file
-autocmd BufNewFile,BufRead *.grm   set syntax=sml
 
-
-"""""""""""""""""""""""""""""
-" NeoVim
-"""""""""""""""""""""""""""""
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n> " make esc work in terminal mode
-endif
 
 """""""""""""""""""""""""""""
 " gVim Options
 """""""""""""""""""""""""""""
 if has('gui_running')
-    set background=dark
-    " Set the colorscheme
-    colorscheme solarized
-    let g:solarized_termcolors=256
+    set guifont=DejaVu\ Sans\ Mono\ 14
+    colorscheme molokai
     set guioptions-=T " remove toolbar
     set guioptions-=r " remove scroll bar
     set guioptions-=L " remove scroll bar
     set guioptions-=m " remove menu bar
-    set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h14
-    set linespace=5
-    " Mac: cmd + num to change tabs ala chrome
-    " http://vimcasts.org/episodes/working-with-tabs/
     map <D-1> 1gt
     map <D-2> 2gt
     map <D-3> 3gt
@@ -111,94 +74,52 @@ if has('gui_running')
 endif
 
 """""""""""""""""""""""""""""
-" Search options
+" Usability
 """""""""""""""""""""""""""""
-
-" Use case insensitive search, except when using capital letters
+" Search
 set ignorecase
 set smartcase
-
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
-" mapping of <C-L> below)
 set hlsearch
-
-" Show where search pattern matches while typing
 set incsearch
 
-
-"""""""""""""""""""""""""""""
-" Usability options
-"""""""""""""""""""""""""""""
-
-" Allow backspacing over autoindent, line breaks and start of insert action
+" Normal backspace behaviour
 set backspace=indent,eol,start
 
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on. Useful for READMEs, etc.
-set autoindent
+" Tab settings
+set expandtab
+set smarttab
+set autoindent 
+" 1 tab = 4 spaces
+set shiftwidth=4 
+set tabstop=4
 
-" Prevent the cursor from changing the current column when jumping to other lines within the window.
-set nostartofline
+" Bracket highlighting
+set showmatch
+set matchtime=2
 
-" Set the command window height to 2 lines, to avoid many cases of having to
-" press <Enter> to continue
-set cmdheight=2
+" Save swp files elsewhere
+set swapfile
+set dir=~/tmp
 
-" Use visual bell instead of beeping when doing something wrong
-set visualbell
+" Auto completion
+set wildmenu 
 
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
-
-" Instead of failing a command because of unsaved changes, instead raise a
-" dialogue asking if you wish to save changed files.
-set confirm
-
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
-
-"""""""""""""""""""""""""""""
 " Line number and cursorline
-"""""""""""""""""""""""""""""
 set number
 set relativenumber
 set cursorline
 
+" Misc
+set nostartofline
+set visualbell
+set ruler
+" Quickly time out on keycodes, but never time out on mappings
+set notimeout ttimeout ttimeoutlen=200
 
-"""""""""""""""""""""""""""""
-" Indentation settings
-"""""""""""""""""""""""""""""
-
-" Use spaces instead of tabs
-set expandtab
-
-" Smart tabs
-set smarttab
-
-" 1 tab = 4 spaces
-set shiftwidth=4
-set tabstop=4
-
-" Spaces in tab when editing
-set softtabstop=4
-
-" Auto indent
-set ai
-
-" Smart indent
-set si
-
-" Wrap lines
-set wrap
-
-" Auto indenting also on copy
-set autoindent
 
 """""""""""""""""""""""""""""
 " Key bindings
 """""""""""""""""""""""""""""
-"
 " Make Shift-Tab work in insert mode
 inoremap <S-Tab> <C-d>
 
@@ -222,17 +143,7 @@ xmap ga <Plug>(EasyAlign)
 " " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-
-"""""""""""""""""""""""""""""
-" NERDTree
-"""""""""""""""""""""""""""""
-
 " NERDTree toggle on <leader>.
 nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
 
-" To have NERDTree always open on startup
-let g:nerdtree_tabs_open_on_console_startup = 1
-
-
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
+autocmd BufNewFile,BufRead *.grm   set syntax=sml
