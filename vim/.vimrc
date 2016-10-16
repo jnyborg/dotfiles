@@ -2,28 +2,27 @@
 " -----------------------------------------------------------------------------
 set nocompatible " be iMproved, required
 filetype off " required
-
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" My plugins here
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jez/vim-better-sml'
-Plugin 'scrooloose/syntastic'
-Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finding files
-Plugin 'airblade/vim-gitgutter' " git plugin vim airline
-Plugin 'Raimondi/delimitMate' " auto match delimiters
-Plugin 'junegunn/vim-easy-align'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'w0ng/vim-hybrid'
+Plugin 'tpope/vim-repeat'               " allows repeat for tpopes plugins
+Plugin 'vim-airline/vim-airline'        " prettier statusline
+Plugin 'vim-airline/vim-airline-themes' " airline themes
+Plugin 'jez/vim-better-sml'             " SML plugin
+Plugin 'scrooloose/syntastic'           " Syntax checker
+Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding files
+Plugin 'airblade/vim-gitgutter'         " git plugin vim airline
+Plugin 'Raimondi/delimitMate'           " auto match delimiters
+Plugin 'junegunn/vim-easy-align'        " Alignment plugin
+Plugin 'Valloric/YouCompleteMe'         " Auto completion
+Plugin 'w0ng/vim-hybrid'                " color theme
+Plugin 'LaTeX-Box-Team/LaTeX-Box'       " Set of LaTeX editing tools.
+
 
 call vundle#end()
 filetype plugin indent on  " Enable file type detection.
@@ -139,11 +138,12 @@ set notimeout ttimeout ttimeoutlen=200
 " Plugin Settings - airline 
 " -----------------------------------------------------------------------------
 
-let g:airline_left_sep = ''        " Remove arrow symbols.
-let g:airline_left_alt_sep = ''    " Remove arrow symbols.
-let g:airline_right_sep = ''       " Remove arrow symbols.
-let g:airline_right_alt_sep = ''   " Remove arrow symbols.
-let g:airline_theme = 'hybridline' " Use hybrid theme.
+let g:airline_left_sep = ''                  " Remove arrow symbols.
+let g:airline_left_alt_sep = ''              " Remove arrow symbols.
+let g:airline_right_sep = ''                 " Remove arrow symbols.
+let g:airline_right_alt_sep = ''             " Remove arrow symbols.
+let g:airline_theme = 'hybridline'           " Use hybrid theme.
+let g:airline#extensions#tabline#enabled = 1 " enable tabs
 
 
 " Plugin Settings - EasyAlign
