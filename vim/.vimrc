@@ -98,7 +98,8 @@ set smartcase              " Override ignorecase if pattern contains upper case.
 " -----------------------------------------------------------------------------
 
 " Make space the leader key
-nmap <space> <leader>
+let mapleader = "\<space>" 
+let maplocalleader = "\<space>" 
 
 " Make Shift-Tab work in insert mode
 inoremap <S-Tab> <C-d>
@@ -132,7 +133,7 @@ set notimeout ttimeout ttimeoutlen=200
  nnoremap <Leader>p "*p
  vnoremap <Leader>p "*p
  nnoremap <Leader><S-P> "*P
- vnoremap <Leader><S-P> "*P)))}
+ vnoremap <Leader><S-P> "*P
 
 
 " Plugin Settings - airline 
