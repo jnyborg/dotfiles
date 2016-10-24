@@ -108,14 +108,18 @@ inoremap <S-Tab> <C-d>
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
-" Exit mode with jj
-inoremap jj <Esc>
+" Exit mode with jk
+inoremap jk <Esc>
 
 " Map Y to act like D and C, i.e. to yank until EOL
 map Y y$
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
+
+" Default jump to mark (') is jump to row and column
+nnoremap ' `
+nnoremap ` '
 
 
 " Mappings - Clipboard 
