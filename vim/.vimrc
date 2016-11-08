@@ -72,7 +72,8 @@ set hidden                 " Hide when switching buffers instead of unloading.
 set mouse=a                " Enable use of the mouse in all modes.
 set nowrap                 " Disable word wrap.
 set textwidth=0            " Do not break lines after a maximum width.
-set wildmenu               " Use enhanced command-line completion."
+set wildmenu               " Use enhanced command-line completion.
+set noswapfile             " Disable swap files 
 
 
 " Search
