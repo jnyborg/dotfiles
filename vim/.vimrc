@@ -32,7 +32,6 @@ filetype plugin indent on  " Enable file type detection.
 syntax on                  " Enable syntax highlighting.
 set encoding=utf-8         " Set the character encoding to UTF-8.
 set background=dark        " Use colours that look good on a dark background.
-set colorcolumn=80         " Show right column in a highlighted colour.
 set history=10000          " Number of commands and search patterns to remember.
 set laststatus=2           " Always show status line.
 set linespace=8            " Increase line height spacing by pixels.
