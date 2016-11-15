@@ -49,9 +49,9 @@ autocmd BufNewFile,BufRead *.grm   set syntax=sml
 " GUI options
 " -----------------------------------------------------------------------------
 if has('gui_running')
-    set guifont=InconsolataGo:h18   " Set the font to use.
+    " set guifont=InconsolataGo:h18   " Set the font to use.
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
     set guioptions=                 " Remove all GUI components and options.
-    set guicursor+=a:block-blinkon0 " Use non-blinking block cursor.
     map <D-1> 1gt                   " Change tabs as in Chrome.
     map <D-2> 2gt
     map <D-3> 3gt
@@ -149,6 +149,7 @@ let g:airline_right_sep = ''                 " Remove arrow symbols.
 let g:airline_right_alt_sep = ''             " Remove arrow symbols.
 let g:airline_theme = 'hybridline'           " Use hybrid theme.
 let g:airline#extensions#tabline#enabled = 1 " enable tabs
+let g:airline#extensions#whitespace#enabled = 0 " disable whitespace check
 
 
 " Plugin Settings - EasyAlign
