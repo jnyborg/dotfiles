@@ -10,18 +10,19 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'               " allows repeat for tpopes plugins
-Plugin 'vim-airline/vim-airline'        " prettier statusline
-Plugin 'vim-airline/vim-airline-themes' " airline themes
-Plugin 'jez/vim-better-sml'             " SML plugin
-Plugin 'scrooloose/syntastic'           " Syntax checker
-Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding files
-Plugin 'airblade/vim-gitgutter'         " git plugin vim airline
-Plugin 'Raimondi/delimitMate'           " auto match delimiters
-Plugin 'junegunn/vim-easy-align'        " Alignment plugin
-Plugin 'Valloric/YouCompleteMe'         " Auto completion
-Plugin 'w0ng/vim-hybrid'                " color theme
-Plugin 'LaTeX-Box-Team/LaTeX-Box'       " Set of LaTeX editing tools.
+Plugin 'tpope/vim-repeat'                 " allows repeat for tpopes plugins
+Plugin 'vim-airline/vim-airline'          " prettier statusline
+Plugin 'vim-airline/vim-airline-themes'   " airline themes
+Plugin 'jez/vim-better-sml'               " SML plugin
+Plugin 'scrooloose/syntastic'             " Syntax checker
+Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy finding files
+Plugin 'airblade/vim-gitgutter'           " git plugin vim airline
+Plugin 'Raimondi/delimitMate'             " auto match delimiters
+Plugin 'junegunn/vim-easy-align'          " Alignment plugin
+Plugin 'Valloric/YouCompleteMe'           " Auto completion
+Plugin 'w0ng/vim-hybrid'                  " color theme
+Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Set of LaTeX editing tools.
+Plugin 'altercation/vim-colors-solarized' " color theme
 
 
 call vundle#end()
@@ -30,11 +31,11 @@ filetype plugin indent on  " Enable file type detection.
 " Appearance
 " -----------------------------------------------------------------------------
 syntax on                  " Enable syntax highlighting.
+colorscheme solarized      " Set color scheme
 set encoding=utf-8         " Set the character encoding to UTF-8.
 set background=dark        " Use colours that look good on a dark background.
 set history=10000          " Number of commands and search patterns to remember.
 set laststatus=2           " Always show status line.
-set linespace=8            " Increase line height spacing by pixels.
 set noshowmode             " Do not show current mode on the last line.
 set number                 " Precede each line with its line number.
 set relativenumber         " All other line numbers are relative to the current.
@@ -49,9 +50,9 @@ autocmd BufNewFile,BufRead *.grm   set syntax=sml
 " GUI options
 " -----------------------------------------------------------------------------
 if has('gui_running')
-    " set guifont=InconsolataGo:h18   " Set the font to use.
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
+    set guifont=DejaVu\ Sans\ Mono
     set guioptions=                 " Remove all GUI components and options.
+    set linespace=6            " Increase line height spacing by pixels.
     map <D-1> 1gt                   " Change tabs as in Chrome.
     map <D-2> 2gt
     map <D-3> 3gt
@@ -147,7 +148,6 @@ let g:airline_left_sep = ''                  " Remove arrow symbols.
 let g:airline_left_alt_sep = ''              " Remove arrow symbols.
 let g:airline_right_sep = ''                 " Remove arrow symbols.
 let g:airline_right_alt_sep = ''             " Remove arrow symbols.
-let g:airline_theme = 'hybridline'           " Use hybrid theme.
 let g:airline#extensions#tabline#enabled = 1 " enable tabs
 let g:airline#extensions#whitespace#enabled = 0 " disable whitespace check
 
@@ -165,11 +165,3 @@ nmap ga <Plug>(EasyAlign)
 " -----------------------------------------------------------------------------
 " NERDTree toggle on <leader>.
 nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
-
-
-" Plugin Settings - hybrid
-" -----------------------------------------------------------------------------
-
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-colorscheme hybrid
