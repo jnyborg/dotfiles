@@ -23,6 +23,7 @@ Plugin 'Valloric/YouCompleteMe'           " Auto completion
 Plugin 'w0ng/vim-hybrid'                  " color theme
 Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Set of LaTeX editing tools.
 Plugin 'altercation/vim-colors-solarized' " color theme
+Plugin 'chriskempson/base16-vim'          " color themes
 
 
 call vundle#end()
@@ -31,7 +32,6 @@ filetype plugin indent on  " Enable file type detection.
 " Appearance
 " -----------------------------------------------------------------------------
 syntax on                  " Enable syntax highlighting.
-colorscheme solarized      " Set color scheme
 set encoding=utf-8         " Set the character encoding to UTF-8.
 set background=dark        " Use colours that look good on a dark background.
 set history=10000          " Number of commands and search patterns to remember.
@@ -50,8 +50,9 @@ autocmd BufNewFile,BufRead *.grm   set syntax=sml
 " GUI options
 " -----------------------------------------------------------------------------
 if has('gui_running')
-    set guifont=DejaVu\ Sans\ Mono
-    set guioptions=                 " Remove all GUI components and options.
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+    colorscheme base16-chalk   " Set color scheme
+    " set guioptions=                 " Remove all GUI components and options.
     set linespace=6            " Increase line height spacing by pixels.
     map <D-1> 1gt                   " Change tabs as in Chrome.
     map <D-2> 2gt
@@ -144,11 +145,12 @@ nnoremap ` '
 " Plugin Settings - airline 
 " -----------------------------------------------------------------------------
 
-let g:airline_left_sep = ''                  " Remove arrow symbols.
-let g:airline_left_alt_sep = ''              " Remove arrow symbols.
-let g:airline_right_sep = ''                 " Remove arrow symbols.
-let g:airline_right_alt_sep = ''             " Remove arrow symbols.
-let g:airline#extensions#tabline#enabled = 1 " enable tabs
+" let g:airline_left_sep = ''                  " Remove arrow symbols.
+" let g:airline_left_alt_sep = ''              " Remove arrow symbols.
+" let g:airline_right_sep = ''                 " Remove arrow symbols.
+" let g:airline_right_alt_sep = ''             " Remove arrow symbols.
+" let g:airline#extensions#tabline#enabled = 1 " enable tabs
+let g:airline_powerline_fonts = 1               " use powerline fonts 
 let g:airline#extensions#whitespace#enabled = 0 " disable whitespace check
 
 
