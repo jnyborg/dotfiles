@@ -52,7 +52,7 @@ autocmd BufNewFile,BufRead *.grm   set syntax=sml
 if has('gui_running')
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
     colorscheme base16-chalk   " Set color scheme
-    " set guioptions=                 " Remove all GUI components and options.
+    set guioptions=                 " Remove all GUI components and options.
     set linespace=6            " Increase line height spacing by pixels.
     map <D-1> 1gt                   " Change tabs as in Chrome.
     map <D-2> 2gt
