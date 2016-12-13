@@ -151,8 +151,17 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 " Plugin Settings - airline 
 " -----------------------------------------------------------------------------
 
-let g:airline_powerline_fonts = 0               " use powerline fonts 
+let g:airline_powerline_fonts = 1               " use powerline fonts 
 let g:airline#extensions#whitespace#enabled = 0 " disable whitespace check
+" Fix for slow escape
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
 
 
 " Plugin Settings - EasyAlign
