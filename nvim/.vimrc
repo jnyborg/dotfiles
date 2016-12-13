@@ -21,10 +21,8 @@ Plugin 'w0ng/vim-hybrid'                  " color theme
 Plugin 'chriskempson/base16-vim'          " color themes
 Plugin 'altercation/vim-colors-solarized' " color theme
 Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Set of LaTeX editing tools.
-"Plugin 'neomake/neomake'		  " Async syntax checker
+Plugin 'neomake/neomake'		  " Async syntax checker
 Plugin 'Shougo/deoplete.nvim'		  " Async auto completion
-Plugin 'jez/vim-better-sml'               " SML plugin
-Plugin 'scrooloose/syntastic'             " Syntax checker
 
 
 call vundle#end()
@@ -126,26 +124,7 @@ set notimeout ttimeout ttimeoutlen=200
 nnoremap ' `
 nnoremap ` '
 
-" Open .vimrc anywhere using <leader>vimrc, and reload on write.
-map <leader>vimrc :tabe ~/.vim/.vimrc<cr>
-autocmd bufwritepost .vimrc source $MYVIMRC
-
-" Terminal settings
-" -----------------------------------------------------------------------------
 tnoremap <Esc> <C-\><C-n> " Bind <Esc> to exit terminal mode
-
-" Move between windows
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-" Enter insert mode when terminal is active
-autocmd BufWinEnter,WinEnter term://* startinsert
 
 
 " Plugin Settings - airline 
@@ -169,4 +148,7 @@ nmap ga <Plug>(EasyAlign)
 " NERDTree toggle on <leader>.
 nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
 
+" Plugin Settings - neomake
+" -----------------------------------------------------------------------------
+autocmd! BufWritePost * Neomake " Run neomake on current file on every write.
 
