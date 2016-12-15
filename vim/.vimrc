@@ -21,10 +21,10 @@ Plugin 'w0ng/vim-hybrid'                  " color theme
 Plugin 'chriskempson/base16-vim'          " color themes
 Plugin 'altercation/vim-colors-solarized' " color theme
 Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Set of LaTeX editing tools.
-"Plugin 'neomake/neomake'		  " Async syntax checker
-Plugin 'Shougo/deoplete.nvim'		  " Async auto completion
+Plugin 'Shougo/deoplete.nvim'             " Async auto completion
 Plugin 'jez/vim-better-sml'               " SML plugin
 Plugin 'scrooloose/syntastic'             " Syntax checker
+Plugin 'vimwiki/vimwiki'                  " Note taking plugin
 
 
 call vundle#end()
@@ -32,21 +32,22 @@ filetype plugin indent on  " Enable file type detection.
 
 " Appearance
 " -----------------------------------------------------------------------------
-syntax on                  " Enable syntax highlighting.
-set encoding=utf-8         " Set the character encoding to UTF-8.
-set background=dark        " Use colours that look good on a dark background.
+syntax on                           " Enable syntax highlighting.
+set encoding=utf-8                  " Set the character encoding to UTF-8.
+set background=dark                 " Use colours that look good on a dark background.
 colorscheme solarized
-set history=10000          " Number of commands and search patterns to remember.
-set laststatus=2           " Always show status line.
-set noshowmode             " Do not show current mode on the last line.
-set number                 " Precede each line with its line number.
-set relativenumber         " All other line numbers are relative to the current.
-set showcmd                " Show command on last line of screen.
-set showmatch              " Show matching brackets.
-set t_Co=256               " Set the number of supported colours.
-set title                  " Set window title to 'filename [+=-] (path) - VIM'.
-set ttyfast                " Indicate fast terminal more smoother redrawing"
-set visualbell             " Disable beeping, show visual indicators instead.
+set history=10000                   " Number of commands and search patterns to remember.
+set laststatus=2                    " Always show status line.
+set noshowmode                      " Do not show current mode on the last line.
+set number                          " Precede each line with its line number.
+set relativenumber                  " All other line numbers are relative to the current.
+set showcmd                         " Show command on last line of screen.
+set showmatch                       " Show matching brackets.
+set t_Co=256                        " Set the number of supported colours.
+set title                           " Set window title to 'filename [+=-] (path) - VIM'.
+set ttyfast                         " Indicate fast terminal more smoother redrawing "
+set visualbell                      " Disable beeping, show visual indicators instead.
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change cursor shape to pipe when in insert mode.
 
 autocmd BufNewFile,BufRead *.grm   set syntax=sml
 
@@ -87,6 +88,7 @@ set hlsearch               " Highlight search pattern results.
 set ignorecase             " Ignore case of normal letters in a pattern.
 set incsearch              " Highlight search pattern as it is typed.
 set smartcase              " Override ignorecase if pattern contains upper case.
+set inccommand=nosplit     " Show substitution as you write
 
 
 " Indents and Tabs 
@@ -127,8 +129,9 @@ nnoremap ' `
 nnoremap ` '
 
 " Open .vimrc anywhere using <leader>vimrc, and reload on write.
-map <leader>vimrc :tabe ~/.vim/.vimrc<cr>
+map <leader>vimrc :tabe ~/.vimrc<cr>
 autocmd bufwritepost .vimrc source $MYVIMRC
+
 
 " Terminal settings
 " -----------------------------------------------------------------------------
@@ -178,4 +181,9 @@ nmap ga <Plug>(EasyAlign)
 " NERDTree toggle on <leader>.
 nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
 
+
+" Plugin Settings - VimWiki
+" -----------------------------------------------------------------------------
+" Change the default path to reside in Dropbox for backup
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 
