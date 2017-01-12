@@ -20,6 +20,7 @@ Plugin 'junegunn/vim-easy-align'          " Alignment plugin
 Plugin 'w0ng/vim-hybrid'                  " color theme
 Plugin 'chriskempson/base16-vim'          " color themes
 Plugin 'altercation/vim-colors-solarized' " color theme
+Plugin 'morhetz/gruvbox'                  " color theme
 Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Set of LaTeX editing tools.
 Plugin 'Shougo/deoplete.nvim'             " Async auto completion
 Plugin 'jez/vim-better-sml'               " SML plugin
@@ -35,7 +36,8 @@ filetype plugin indent on  " Enable file type detection.
 syntax on                           " Enable syntax highlighting.
 set encoding=utf-8                  " Set the character encoding to UTF-8.
 set background=dark                 " Use colours that look good on a dark background.
-colorscheme solarized
+colorscheme gruvbox
+let base16colorspace=256
 set history=10000                   " Number of commands and search patterns to remember.
 set laststatus=2                    " Always show status line.
 set noshowmode                      " Do not show current mode on the last line.
