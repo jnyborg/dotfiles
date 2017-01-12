@@ -38,6 +38,7 @@ set encoding=utf-8                  " Set the character encoding to UTF-8.
 set background=dark                 " Use colours that look good on a dark background.
 colorscheme gruvbox
 let base16colorspace=256
+set cursorline                      " highlight current line
 set history=10000                   " Number of commands and search patterns to remember.
 set laststatus=2                    " Always show status line.
 set noshowmode                      " Do not show current mode on the last line.
