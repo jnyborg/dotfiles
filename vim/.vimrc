@@ -24,7 +24,7 @@ Plugin 'morhetz/gruvbox'                  " color theme
 Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Set of LaTeX editing tools.
 Plugin 'Shougo/deoplete.nvim'             " Async auto completion
 Plugin 'jez/vim-better-sml'               " SML plugin
-Plugin 'scrooloose/syntastic'             " Syntax checker
+Plugin 'neomake/neomake'
 Plugin 'vimwiki/vimwiki'                  " Note taking plugin
 
 
@@ -37,7 +37,7 @@ syntax on                           " Enable syntax highlighting.
 set encoding=utf-8                  " Set the character encoding to UTF-8.
 set background=dark                 " Use colours that look good on a dark background.
 colorscheme gruvbox
-let base16colorspace=256
+set termguicolors
 set cursorline                      " highlight current line
 set history=10000                   " Number of commands and search patterns to remember.
 set laststatus=2                    " Always show status line.
@@ -190,3 +190,7 @@ nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
 " Change the default path to reside in Dropbox for backup
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 
+" Plugin Settings - Neomake
+" -----------------------------------------------------------------------------
+" Run neomake on every write
+autocmd! BufWritePost * Neomake

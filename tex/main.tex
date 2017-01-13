@@ -1,0 +1,29 @@
+\documentclass{article}
+%%% Imports %%%
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+
+%%% Appearance Options %%%
+% in math mode when you use * it will now use cdot instead 
+\mathcode`\*="8000{\catcode`\*\active\gdef*{\cdot}}
+
+% remove indentation after newlines
+\setlength{\parindent}{0pt}
+
+%%% Page Options %%%
+\pagestyle{fancyplain}
+
+\title{Title Here}
+\author{Author here}
+\date{Date here}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\section{Hello World}
+
+\end{document}
