@@ -201,11 +201,14 @@ bindsym XF86AudioPrev exec playerctl previous
 # Lock screen binding
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
 
+# Move workspace to other monitor 
+bindsym $mod+m move workspace to output left
+
 # Set keyboard layout to danish
 exec setxkbmap dk
 exec spotify
 # Launch vmware tools on startup (vm only)
-#exec vmware-user-suid-wrapper --no-startup-id
+exec vmware-user-suid-wrapper --no-startup-id
 
 # transparent windows
 exec_always compton
