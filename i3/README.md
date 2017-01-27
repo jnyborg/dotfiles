@@ -1,4 +1,4 @@
-= Required packages =
+# Required and useful packages 
 
 - lxappearance
 - San Francisco Font for windows
@@ -9,3 +9,6 @@
 - compton for transparency
 - i3blocks - task bar alternative
 - pavucontrol for fixing audio in i3blocks
+- feh for setting wallpaper
+- arandr - gui for setting monitor layout
+	- Use save as, and use exec to load the file at every login
