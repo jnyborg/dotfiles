@@ -26,6 +26,7 @@ Plugin 'Shougo/deoplete.nvim'             " Async auto completion
 Plugin 'jez/vim-better-sml'               " SML plugin
 Plugin 'neomake/neomake'
 Plugin 'vimwiki/vimwiki'                  " Note taking plugin
+Plugin 'vim-latex/vim-latex'
 
 
 call vundle#end()
@@ -194,3 +195,10 @@ let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 " -----------------------------------------------------------------------------
 " Run neomake on every write
 autocmd! BufWritePost * Neomake
+
+" Plugin Settings - Latex
+" -----------------------------------------------------------------------------
+" Disable folding
+let Tex_FoldedSections=""
+let Tex_FoldedEnvironments=""
+let Tex_FoldedMisc=""
