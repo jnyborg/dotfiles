@@ -139,6 +139,7 @@ autocmd bufwritepost .vimrc source $MYVIMRC
 " Terminal settings
 " -----------------------------------------------------------------------------
 tnoremap <Esc> <C-\><C-n> " Bind <Esc> to exit terminal mode
+let g:gruvbox_termcolors=16
 
 " Move between windows
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -194,3 +195,8 @@ let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 " -----------------------------------------------------------------------------
 " Run neomake on every write
 autocmd! BufWritePost * Neomake
+
+" Plugin Settings - Deoplete
+" -----------------------------------------------------------------------------
+" Use deoplete
+let g:deoplete#enable_at_startup = 1
