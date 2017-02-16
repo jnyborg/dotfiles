@@ -3,8 +3,9 @@
 - lxappearance
 - San Francisco Font for windows
 	- You need to modify gtk files 2.0 and 3.0, lxappearance wont do it
+	- infinality for font rendering
 - Arc theme for firefox + ubuntu
-- Moka font
+- Moka icon theme
 - rofi - mod-d alternative
 - compton for transparency
 - i3blocks - task bar alternative

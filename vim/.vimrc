@@ -37,7 +37,7 @@ filetype plugin indent on  " Enable file type detection.
 syntax on                           " Enable syntax highlighting.
 set encoding=utf-8                  " Set the character encoding to UTF-8.
 set background=dark                 " Use colours that look good on a dark background.
-colorscheme gruvbox
+colorscheme base16-eighties
 set termguicolors
 set cursorline                      " highlight current line
 set history=10000                   " Number of commands and search patterns to remember.
@@ -140,6 +140,7 @@ autocmd bufwritepost .vimrc source $MYVIMRC
 " Terminal settings
 " -----------------------------------------------------------------------------
 tnoremap <Esc> <C-\><C-n> " Bind <Esc> to exit terminal mode
+let g:gruvbox_termcolors=16
 
 " Move between windows
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -202,3 +203,12 @@ autocmd! BufWritePost * Neomake
 let Tex_FoldedSections=""
 let Tex_FoldedEnvironments=""
 let Tex_FoldedMisc=""
+
+" Plugin Settings - Deoplete
+" -----------------------------------------------------------------------------
+" Use deoplete
+let g:deoplete#enable_at_startup = 1
+" use tab to forward cycle
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" use shift-tab to backward cycle
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
