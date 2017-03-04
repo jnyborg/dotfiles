@@ -23,8 +23,6 @@ Plugin 'Valloric/YouCompleteMe'           " Auto completion
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 
-
-
 call vundle#end()
 filetype plugin indent on  " Enable file type detection.
 
@@ -117,8 +115,6 @@ nnoremap ` '
 " Open .vimrc anywhere using <leader>vimrc, and reload on write.
 map <leader>vimrc :tabe ~/.vimrc<cr>
 autocmd bufwritepost .vimrc source $MYVIMRC
-
-
 
 " Plugin Settings - airline 
 " -----------------------------------------------------------------------------
