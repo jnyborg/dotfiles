@@ -17,15 +17,12 @@ Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy finding files
 Plugin 'airblade/vim-gitgutter'           " git plugin vim airline
 Plugin 'Raimondi/delimitMate'             " auto match delimiters
 Plugin 'junegunn/vim-easy-align'          " Alignment plugin
-Plugin 'w0ng/vim-hybrid'                  " color theme
 Plugin 'chriskempson/base16-vim'          " color themes
-Plugin 'altercation/vim-colors-solarized' " color theme
-Plugin 'morhetz/gruvbox'                  " color theme
-Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Set of LaTeX editing tools.
-Plugin 'Shougo/deoplete.nvim'             " Async auto completion
-Plugin 'jez/vim-better-sml'               " SML plugin
-Plugin 'neomake/neomake'
 Plugin 'vimwiki/vimwiki'                  " Note taking plugin
+Plugin 'Valloric/YouCompleteMe'           " Auto completion
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+
 
 
 call vundle#end()
@@ -36,7 +33,7 @@ filetype plugin indent on  " Enable file type detection.
 syntax on                           " Enable syntax highlighting.
 set encoding=utf-8                  " Set the character encoding to UTF-8.
 set background=dark                 " Use colours that look good on a dark background.
-colorscheme gruvbox
+colorscheme base16-monokai
 set termguicolors
 set cursorline                      " highlight current line
 set history=10000                   " Number of commands and search patterns to remember.
@@ -46,31 +43,18 @@ set number                          " Precede each line with its line number.
 set relativenumber                  " All other line numbers are relative to the current.
 set showcmd                         " Show command on last line of screen.
 set showmatch                       " Show matching brackets.
-set t_Co=256                        " Set the number of supported colours.
 set title                           " Set window title to 'filename [+=-] (path) - VIM'.
 set ttyfast                         " Indicate fast terminal more smoother redrawing "
 set visualbell                      " Disable beeping, show visual indicators instead.
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change cursor shape to pipe when in insert mode.
+let python_highlight_all=1          "  "
 
-autocmd BufNewFile,BufRead *.grm   set syntax=sml
 
 " GUI options
 " -----------------------------------------------------------------------------
 if has('gui_running')
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
-    colorscheme base16-chalk   " Set color scheme
-    set guioptions=                 " Remove all GUI components and options.
-    set linespace=6            " Increase line height spacing by pixels.
-    map <D-1> 1gt                   " Change tabs as in Chrome.
-    map <D-2> 2gt
-    map <D-3> 3gt
-    map <D-4> 4gt
-    map <D-5> 5gt
-    map <D-6> 6gt
-    map <D-7> 7gt
-    map <D-8> 8gt
-    map <D-9> 9gt
-    map <D-0> :tablast<CR>]
+    set guifont=Meslo\ LG\ L\ DZ\ Regular\ for\ Powerline:h14
+    colorscheme base16-monokai " Set color scheme
+    set guioptions=          " Remove all GUI components and options.
 endif
 
 
@@ -91,7 +75,6 @@ set hlsearch               " Highlight search pattern results.
 set ignorecase             " Ignore case of normal letters in a pattern.
 set incsearch              " Highlight search pattern as it is typed.
 set smartcase              " Override ignorecase if pattern contains upper case.
-set inccommand=nosplit     " Show substitution as you write
 
 
 " Indents and Tabs 
@@ -136,38 +119,16 @@ map <leader>vimrc :tabe ~/.vimrc<cr>
 autocmd bufwritepost .vimrc source $MYVIMRC
 
 
-" Terminal settings
-" -----------------------------------------------------------------------------
-tnoremap <Esc> <C-\><C-n> " Bind <Esc> to exit terminal mode
-
-" Move between windows
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-" Enter insert mode when terminal is active
-autocmd BufWinEnter,WinEnter term://* startinsert
-
 
 " Plugin Settings - airline 
 " -----------------------------------------------------------------------------
-
 let g:airline_powerline_fonts = 1               " use powerline fonts 
 let g:airline#extensions#whitespace#enabled = 0 " disable whitespace check
-" Fix for slow escape
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
+" Remove arrow symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 
 " Plugin Settings - EasyAlign
@@ -184,13 +145,18 @@ nmap ga <Plug>(EasyAlign)
 " NERDTree toggle on <leader>.
 nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
 
+nmap <silent> <leader>floo :FlooJoinWorkspace https://floobits.com/steffen555/lego<CR>
 
 " Plugin Settings - VimWiki
 " -----------------------------------------------------------------------------
 " Change the default path to reside in Dropbox for backup
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 
-" Plugin Settings - Neomake
+
+" Plugin Settings - YouCompleteMe
 " -----------------------------------------------------------------------------
-" Run neomake on every write
-autocmd! BufWritePost * Neomake
+" Ensure autocomplete window goes away when you're done with it
+let g:ycm_autoclose_preview_window_after_completion=1
+
+" Go to definition binding
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
