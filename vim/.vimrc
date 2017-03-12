@@ -19,9 +19,13 @@ Plugin 'Raimondi/delimitMate'             " auto match delimiters
 Plugin 'junegunn/vim-easy-align'          " Alignment plugin
 Plugin 'chriskempson/base16-vim'          " color themes
 Plugin 'vimwiki/vimwiki'                  " Note taking plugin
+Plugin 'scrooloose/syntastic'             " Syntax plugin
+Plugin 'tpope/vim-fugitive'               " Git wrapper plugin
 Plugin 'Valloric/YouCompleteMe'           " Auto completion
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
+Plugin 'SirVer/ultisnips'                 " Snippet engine
+Plugin 'honza/vim-snippets'               " Snippets 
+Plugin 'ervandew/supertab'                " Make YouCompleteMe and ultisnips both work with tab
+
 
 call vundle#end()
 filetype plugin indent on  " Enable file type detection.
@@ -51,7 +55,8 @@ let python_highlight_all=1          "  "
 " -----------------------------------------------------------------------------
 if has('gui_running')
     set guifont=Meslo\ LG\ L\ DZ\ Regular\ for\ Powerline:h14
-    colorscheme base16-monokai " Set color scheme
+    colorscheme base16-solarized-light " Set color scheme
+    set background=light                 " Use colours that look good on a dark background.
     set guioptions=          " Remove all GUI components and options.
 endif
 
@@ -92,9 +97,6 @@ set smartcase              " Override ignorecase if pattern contains upper case.
 let mapleader = "\<space>" 
 let maplocalleader = "\<space>" 
 
-" Make Shift-Tab work in insert mode
-inoremap <S-Tab> <C-d>
-
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
@@ -116,15 +118,18 @@ nnoremap ` '
 map <leader>vimrc :tabe ~/.vimrc<cr>
 autocmd bufwritepost .vimrc source $MYVIMRC
 
+" Always set .tex as latex filetype
+let g:tex_flavor = "latex"
+
 " Plugin Settings - airline 
 " -----------------------------------------------------------------------------
 let g:airline_powerline_fonts = 1               " use powerline fonts 
 let g:airline#extensions#whitespace#enabled = 0 " disable whitespace check
 " Remove arrow symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
 
 
 " Plugin Settings - EasyAlign
@@ -141,7 +146,9 @@ nmap ga <Plug>(EasyAlign)
 " NERDTree toggle on <leader>.
 nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
 
-nmap <silent> <leader>floo :FlooJoinWorkspace https://floobits.com/steffen555/lego<CR>
+" Close nerdtree if it is the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
 " Plugin Settings - VimWiki
 " -----------------------------------------------------------------------------
@@ -149,10 +156,24 @@ nmap <silent> <leader>floo :FlooJoinWorkspace https://floobits.com/steffen555/le
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 
 
-" Plugin Settings - YouCompleteMe
+" Plugin Settings - YouCompleteMe, SuperTab, UltiSnips
 " -----------------------------------------------------------------------------
 " Ensure autocomplete window goes away when you're done with it
 let g:ycm_autoclose_preview_window_after_completion=1
 
 " Go to definition binding
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" My own snippets reside in ~/.vim/my-snippets
+let g:UltiSnipsSnippetDirectories=["my-snippets"]
+
