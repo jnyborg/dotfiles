@@ -35,8 +35,8 @@ filetype plugin indent on  " Enable file type detection.
 syntax on                           " Enable syntax highlighting.
 set encoding=utf-8                  " Set the character encoding to UTF-8.
 set background=dark                 " Use colours that look good on a dark background.
+let base16colorspace=256            " Access colors present in 256 colorspace
 colorscheme base16-monokai
-set termguicolors
 set cursorline                      " highlight current line
 set history=10000                   " Number of commands and search patterns to remember.
 set laststatus=2                    " Always show status line.
@@ -46,9 +46,8 @@ set relativenumber                  " All other line numbers are relative to the
 set showcmd                         " Show command on last line of screen.
 set showmatch                       " Show matching brackets.
 set title                           " Set window title to 'filename [+=-] (path) - VIM'.
-set ttyfast                         " Indicate fast terminal more smoother redrawing "
 set visualbell                      " Disable beeping, show visual indicators instead.
-let python_highlight_all=1          "  "
+let python_highlight_all=1          
 
 
 " GUI options
@@ -120,6 +119,11 @@ autocmd bufwritepost .vimrc source $MYVIMRC
 
 " Always set .tex as latex filetype
 let g:tex_flavor = "latex"
+" Save the file using Ctrl-S
+nnoremap <C-S> :update<cr>
+inoremap <C-S> <Esc>:update<cr>gi
+
+
 
 " Plugin Settings - airline 
 " -----------------------------------------------------------------------------
