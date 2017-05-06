@@ -12,12 +12,20 @@
 # Generate pdf using pdflatex (-pdf)
 $pdf_mode = 1;
 
+# Use bibtex if a .bib file exists
+$bibtex_use = 1;
+
 # Define command to compile with pdfsync support and nonstopmode
 $pdflatex = 'pdflatex -synctex=1 --interaction=nonstopmode -file-line-error';
 
-# Use default pdf viewer (mupdf)
-$pdf_update_method = 2;
-$pdf_previewer = 'mupdf';
+# Use default pdf viewer (Skim) (OSX)
+$pdf_previewer = 'open';
+
+# Use default pdf viewer (mupdf) (Linux)
+# $pdf_update_method = 2;
+# $pdf_previewer = 'mupdf';
 
 # Also remove pdfsync files on clean
 $clean_ext = 'pdfsync synctex.gz';
+
+
