@@ -15,7 +15,7 @@ Plugin 'vim-airline/vim-airline'          " prettier statusline
 Plugin 'vim-airline/vim-airline-themes'   " airline themes
 Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy finding files
 Plugin 'airblade/vim-gitgutter'           " git plugin vim airline
-Plugin 'Raimondi/delimitMate'             " auto match delimiters
+Plugin 'jiangmiao/auto-pairs'             " Brackets pairing plugin
 Plugin 'junegunn/vim-easy-align'          " Alignment plugin
 Plugin 'chriskempson/base16-vim'          " color themes
 Plugin 'vimwiki/vimwiki'                  " Note taking plugin
@@ -24,7 +24,12 @@ Plugin 'tpope/vim-fugitive'               " Git wrapper plugin
 Plugin 'Valloric/YouCompleteMe'           " Auto completion
 Plugin 'SirVer/ultisnips'                 " Snippet engine
 Plugin 'honza/vim-snippets'               " Snippets 
-Plugin 'ervandew/supertab'                " Make YouCompleteMe and ultisnips both work with tab
+" Web dev
+Plugin 'mattn/emmet-vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'pangloss/vim-javascript'
+
+
 
 
 call vundle#end()
@@ -36,7 +41,7 @@ syntax on                           " Enable syntax highlighting.
 set encoding=utf-8                  " Set the character encoding to UTF-8.
 set background=dark                 " Use colours that look good on a dark background.
 let base16colorspace=256            " Access colors present in 256 colorspace
-colorscheme base16-monokai
+"colorscheme base16-monokai
 set cursorline                      " highlight current line
 set history=10000                   " Number of commands and search patterns to remember.
 set laststatus=2                    " Always show status line.
@@ -53,8 +58,8 @@ let python_highlight_all=1
 " GUI options
 " -----------------------------------------------------------------------------
 if has('gui_running')
-    set guifont=Meslo\ LG\ L\ DZ\ Regular\ for\ Powerline:h14
-    colorscheme base16-solarized-light " Set color scheme
+    set guifont=Hack\ 11
+    colorscheme base16-monokai
     set background=light                 " Use colours that look good on a dark background.
     set guioptions=          " Remove all GUI components and options.
 endif
@@ -88,6 +93,10 @@ set smartcase              " Override ignorecase if pattern contains upper case.
  set softtabstop=4          " Spaces for tabs when inserting <Tab> or <BS>.
  set tabstop=4              " Spaces that a <Tab> in file counts for.
 
+ autocmd Filetype html setlocal ts=2 sts=2 sw=2
+ autocmd Filetype css setlocal ts=2 sts=2 sw=2
+ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
 
 " Mappings - General
 " -----------------------------------------------------------------------------
@@ -115,7 +124,7 @@ nnoremap ` '
 
 " Open .vimrc anywhere using <leader>vimrc, and reload on write.
 map <leader>vimrc :tabe ~/.vimrc<cr>
-autocmd bufwritepost .vimrc source $MYVIMRC
+"autocmd bufwritepost .vimrc source $MYVIMRC
 
 " Always set .tex as latex filetype
 let g:tex_flavor = "latex"
@@ -168,16 +177,17 @@ let g:ycm_autoclose_preview_window_after_completion=1
 " Go to definition binding
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" UltiSnips triggering
+let g:UltiSnipsExpandTrigger = '<C-j>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-" let g:UltiSnipsJumpForwardTrigger = "<tab>"
-" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
 
 " My own snippets reside in ~/.vim/my-snippets
 let g:UltiSnipsSnippetDirectories=["my-snippets"]
 
+
+" Plugin Settings - javascript-libraries-syntax
+" -----------------------------------------------------------------------------
+let g:used_javascript_libs = 'react'
