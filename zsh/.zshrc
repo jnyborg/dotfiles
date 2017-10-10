@@ -1,5 +1,4 @@
 source $HOME/antigen.zsh
-source /usr/share/autojump/autojump.sh
 
 # Alternate Pure prompt symbol
 PURE_PROMPT_SYMBOL=">"
@@ -14,12 +13,18 @@ antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
+antigen bundle autojump
+
 # Pure theme
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 
 # Tell Antigen that you're done.
 antigen apply
+
+# Auto suggestions config
+source ~/.antigen/bundles/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
 
 # Use ctrl+space to accept suggestions.
 bindkey '^ ' autosuggest-accept
