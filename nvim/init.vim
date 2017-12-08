@@ -53,4 +53,4 @@ set smarttab               " Insert and delete sw blanks in the front of a line.
 set softtabstop=4          " Spaces for tabs when inserting <Tab> or <BS>.
 set tabstop=4              " Spaces that a <Tab> in file counts for.
 
-
+let g:python3_host_prog='/usr/local/bin/python3'
