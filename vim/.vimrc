@@ -6,99 +6,60 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'                 " allows repeat for tpopes plugins
-Plugin 'vim-airline/vim-airline'          " prettier statusline
-Plugin 'vim-airline/vim-airline-themes'   " airline themes
 Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy finding files
-Plugin 'airblade/vim-gitgutter'           " git plugin vim airline
-Plugin 'jiangmiao/auto-pairs'             " Brackets pairing plugin
-Plugin 'junegunn/vim-easy-align'          " Alignment plugin
-Plugin 'chriskempson/base16-vim'          " color themes
 Plugin 'vimwiki/vimwiki'                  " Note taking plugin
-Plugin 'scrooloose/syntastic'             " Syntax plugin
-Plugin 'tpope/vim-fugitive'               " Git wrapper plugin
-Plugin 'Valloric/YouCompleteMe'           " Auto completion
-Plugin 'SirVer/ultisnips'                 " Snippet engine
-Plugin 'honza/vim-snippets'               " Snippets 
-" Web dev
-Plugin 'mattn/emmet-vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'pangloss/vim-javascript'
-
-
+Plugin 'morhetz/gruvbox'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'markonm/traces.vim'               " show substitution as you type
 
 
 call vundle#end()
 filetype plugin indent on  " Enable file type detection.
 
-" Appearance
+" General
 " -----------------------------------------------------------------------------
-syntax on                           " Enable syntax highlighting.
-set encoding=utf-8                  " Set the character encoding to UTF-8.
-set background=dark                 " Use colours that look good on a dark background.
-let base16colorspace=256            " Access colors present in 256 colorspace
-"colorscheme base16-monokai
-set cursorline                      " highlight current line
-set history=10000                   " Number of commands and search patterns to remember.
-set laststatus=2                    " Always show status line.
-set noshowmode                      " Do not show current mode on the last line.
-set number                          " Precede each line with its line number.
-set relativenumber                  " All other line numbers are relative to the current.
-set showcmd                         " Show command on last line of screen.
-set showmatch                       " Show matching brackets.
-set title                           " Set window title to 'filename [+=-] (path) - VIM'.
-set visualbell                      " Disable beeping, show visual indicators instead.
-let python_highlight_all=1          
+syntax on                      " Enable syntax highlighting.
+colorscheme gruvbox
+set background=dark            " Use colours that look good on a dark background.
+set number                     " Precede each line with its line number.
+set showmatch                  " Show matching brackets.
+set noswapfile                 " Disable swap files
+set belloff=all                " Disable bell sound
+set display=lastline           " Don't show '@' instead of long lines
+set wildmenu                   " Enhanced command-line completion
+set hlsearch                   " Highlight search pattern results.
+set ignorecase                 " Ignore case of normal letters in a pattern.
+set incsearch                  " Highlight search pattern as it is typed.
+set smartcase                  " Override ignorecase if pattern contains upper case.
+set autoindent                 " Copy indent from previous line.
+set expandtab                  " Replace tabs with spaces in Insert mode.
+set shiftwidth=4               " Spaces for each (auto)indent.
+set smarttab                   " Insert and delete sw blanks in the front of a line.
+set softtabstop=4              " Spaces for tabs when inserting <Tab> or <BS>.
+set tabstop=4                  " Spaces that a <Tab> in file counts for.
+set backspace=indent,eol,start " Modern backspace behaviour
+set ruler                      " Display current line number in corner
+set showcmd                    " Show last command in status line
+set laststatus=2               " always display a status line
+set encoding=utf-8             " Set default encoding
+set formatoptions=tcqj         " more intuitive autoformatting
+set fsync                      " call fsync() for robust file saving
+set history=10000              " longest possible command history
+set langnoremap                " helps avoid mappings breaking
+set shortmess=F                " less verbose file info
+set sidescroll=1               " smoother sideways scrolling
+set autoread                   " reload from disk
+set ttimeoutlen=50             " ms to wait for next key in sequence
+set ttyfast                    " indicates our connection is fast
+set complete-=i                " auto complete ctrl+p does not search in included files
+set mouse=a                    " enable mouse use in all modes
 
 
-" GUI options
-" -----------------------------------------------------------------------------
-if has('gui_running')
-    set guifont=Hack\ 11
-    colorscheme base16-monokai
-    set background=light                 " Use colours that look good on a dark background.
-    set guioptions=          " Remove all GUI components and options.
-endif
 
-
-" Behaviour
-" -----------------------------------------------------------------------------
-set backspace=2            " Allow <BS> and <Del> over everything.
-set hidden                 " Hide when switching buffers instead of unloading.
-set mouse=a                " Enable use of the mouse in all modes.
-set nowrap                 " Disable word wrap.
-set textwidth=0            " Do not break lines after a maximum width.
-set wildmenu               " Use enhanced command-line completion.
-set noswapfile             " Disable swap files 
-
-
-" Search
-" -----------------------------------------------------------------------------
-set hlsearch               " Highlight search pattern results.
-set ignorecase             " Ignore case of normal letters in a pattern.
-set incsearch              " Highlight search pattern as it is typed.
-set smartcase              " Override ignorecase if pattern contains upper case.
-
-
-" Indents and Tabs 
-" -----------------------------------------------------------------------------
- set autoindent             " Copy indent from previous line.
- set expandtab              " Replace tabs with spaces in Insert mode.
- set shiftwidth=4           " Spaces for each (auto)indent.
- set smarttab               " Insert and delete sw blanks in the front of a line.
- set softtabstop=4          " Spaces for tabs when inserting <Tab> or <BS>.
- set tabstop=4              " Spaces that a <Tab> in file counts for.
-
- autocmd Filetype html setlocal ts=2 sts=2 sw=2
- autocmd Filetype css setlocal ts=2 sts=2 sw=2
- autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-
-
-" Mappings - General
+" Mappings
 " -----------------------------------------------------------------------------
 
 " Make space the leader key
@@ -110,84 +71,16 @@ let maplocalleader = "\<space>"
 nnoremap <C-L> :nohl<CR><C-L>
 
 " Exit mode with jk
-inoremap jk <Esc>
+inoremap jk <Esc> 
 
 " Map Y to act like D and C, i.e. to yank until EOL
 map Y y$
 
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
-
-" Default jump to mark (') is jump to row and column
-nnoremap ' `
-nnoremap ` '
-
 " Open .vimrc anywhere using <leader>vimrc, and reload on write.
-map <leader>vimrc :tabe ~/.vimrc<cr>
-"autocmd bufwritepost .vimrc source $MYVIMRC
+map <leader>vimrc :tabe ~/.vimrc<cr> 
 
-" Always set .tex as latex filetype
-let g:tex_flavor = "latex"
-" Save the file using Ctrl-S
-nnoremap <C-S> :update<cr>
-inoremap <C-S> <Esc>:update<cr>gi
-
-
-
-" Plugin Settings - airline 
-" -----------------------------------------------------------------------------
-let g:airline_powerline_fonts = 1               " use powerline fonts 
-let g:airline#extensions#whitespace#enabled = 0 " disable whitespace check
-" Remove arrow symbols
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-
-
-" Plugin Settings - EasyAlign
-" -----------------------------------------------------------------------------
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
-"
-" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-
-" Plugin Settings - NERDTree
-" -----------------------------------------------------------------------------
-" NERDTree toggle on <leader>.
-nmap <silent> <leader>. :NERDTreeTabsToggle<CR>
-
-" Close nerdtree if it is the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-
-" Plugin Settings - VimWiki
-" -----------------------------------------------------------------------------
-" Change the default path to reside in Dropbox for backup
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
-
-
-" Plugin Settings - YouCompleteMe, SuperTab, UltiSnips
-" -----------------------------------------------------------------------------
-" Ensure autocomplete window goes away when you're done with it
-let g:ycm_autoclose_preview_window_after_completion=1
-
-" Go to definition binding
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" UltiSnips triggering
-let g:UltiSnipsExpandTrigger = '<C-j>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-
-
-
-" My own snippets reside in ~/.vim/my-snippets
-let g:UltiSnipsSnippetDirectories=["my-snippets"]
-
-
-" Plugin Settings - javascript-libraries-syntax
-" -----------------------------------------------------------------------------
-let g:used_javascript_libs = 'react'
