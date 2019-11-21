@@ -1,30 +1,54 @@
-source $HOME/antigen.zsh
+#export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Alternate Pure prompt symbol
-PURE_PROMPT_SYMBOL=">"
+export ZSH="/home/jnyborg/.oh-my-zsh"
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+ZSH_THEME="robbyrussell"
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
-# Syntax highlighting 
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
+source $ZSH/oh-my-zsh.sh
 
-antigen bundle autojump
+# Pure prompt
+fpath+=("$HOME/.zsh/pure") 
+export PURE_PROMPT_SYMBOL=">"
+autoload -U promptinit; promptinit
+prompt pure
+zstyle :prompt:pure:virtualenv color white  # set conda env color
 
-# Pure theme
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
 
-# Tell Antigen that you're done.
-antigen apply
 
-# Auto suggestions config
-source ~/.antigen/bundles/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
-
-# Use ctrl+space to accept suggestions.
+# Autojump
+source /usr/share/autojump/autojump.sh
 bindkey '^ ' autosuggest-accept
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/jnyborg/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jnyborg/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/jnyborg/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jnyborg/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# Python
+export PYTHONPATH=$PYTHONPATH:.
+
+
+# Nautilus as open
+alias open="gtk-launch org.gnome.Nautilus"
+alias charm="gtk-launch pycharm-professional_pycharm-professional.desktop > /dev/null 2>&1"
+
+# Add pip installed programs to path
+export PATH=~/.local/bin:$PATH
+alias python="python3"
+alias setngrok="python /home/jnyborg/scripts/set_beast_ngrok_port.py"
+alias fieldsensemon="bash ~/scripts/xrandr_fieldsense.sh"
+

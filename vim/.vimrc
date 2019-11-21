@@ -63,6 +63,12 @@ set mouse=a               " enable mouse use in all modes
 set clipboard=unnamedplus " use system clipboard
 set formatoptions+=j      " Delete comment character when joining commented lines
 set hidden                " Don't complain about unsaved files when switching buffers
+set fsync
+set ttimeout
+set ttimeoutlen=50
+
+" VimWiki: default location.
+" let g:vimwiki_list = [{'path': '$HOME/Drive/vimwiki'}]
 
 
 " --- Mappings ----------------------------------------------------------------------------- " 
@@ -96,8 +102,6 @@ nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 
-
-
-
+map <leader>w :update<cr> 
 
 
