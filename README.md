@@ -15,3 +15,9 @@ And zshrc
 ```
 ln -sf $(pwd)/zsh/.zshrc ~/.zshrc
 ```
+
+And similarly for i3
+```
+ln -sf $(pwd)/i3/config ~/.config/i3/config
+ln -sf $(pwd)/i3/i3blocks.conf ~/.config/i3/i3blocks.conf
+```
