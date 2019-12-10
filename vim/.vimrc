@@ -104,4 +104,5 @@ nnoremap <C-h> <C-W><C-H>
 
 map <leader>w :update<cr> 
 
-
+" Map Ctrl+Space to trigger auto complete
+inoremap <Nul> <C-n>
