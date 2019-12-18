@@ -24,5 +24,5 @@ echo "Setting up sync to ${destination}"
 
 echo 'Waiting for changes...'
 while inotifywait -r -q -q -e modify,create,delete .; do
-    rsync -azhi --delete --exclude-from $exclude_file . ${destination} | grep '^<' | awk '{ print "Uploaded " $2 }'
+    rsync -azhi --exclude-from $exclude_file . ${destination} | grep '^<' | awk '{ print "Uploaded " $2 }'
 done

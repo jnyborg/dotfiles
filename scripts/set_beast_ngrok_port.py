@@ -27,13 +27,14 @@ if __name__ == '__main__':
         f.writelines(lines)
 
     # write to pycharm deployment servers
-    xml = ET.parse(pycharm_webservers)
-    for x in xml.getroot().iter('webServer'):
-        if x.attrib['name'] == 'beast ngrok':
-            file_transfer = x.find('fileTransfer')
-            file_transfer.set('port', port)
-            file_transfer.find('option').set('value', port)
+    # xml = ET.parse(pycharm_webservers)
+    # for x in xml.getroot().iter('webServer'):
+    #     if x.attrib['name'] == 'beast ngrok':
+    #         file_transfer = x.find('fileTransfer')
+    #         file_transfer.set('port', port)
+    #         file_transfer.find('option').set('value', port)
 
-    xml.write(pycharm_webservers)
-    print("Updated ssh config and pycharm")
+    # xml.write(pycharm_webservers)
+    # print("Updated ssh config and pycharm")
+    print("Updated ssh config")
 

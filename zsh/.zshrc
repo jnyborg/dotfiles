@@ -44,7 +44,8 @@ export PYTHONPATH=$PYTHONPATH:.
 
 # Nautilus as open
 alias open="gtk-launch org.gnome.Nautilus"
-# alias charm="gtk-launch pycharm-professional_pycharm-professional.desktop > /dev/null 2>&1"
+# Snapd .desktop location: /var/lib/snapd/desktop/applications
+alias charm="gtk-launch pycharm-community_pycharm-community > /dev/null 2>&1"
 
 # Add pip installed programs to path
 export PATH=~/.local/bin:$PATH
