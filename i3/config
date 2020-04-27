@@ -203,6 +203,7 @@ for_window [class="Slack"] move to workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
 # Startup programs
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 exec spotify
 exec slack
 exec google-chrome-stable
@@ -218,7 +219,7 @@ exec_always feh --bg-fill ~/git/dotfiles/i3/la_wallpaper.png
 
 # Configure monitors
 exec_always xrandr --auto  # Refresh connected displays
-exec_always ~/scripts/set_monitors.sh 
+exec_always ~/git/dotfiles/scripts/set_monitors.sh 
 
 # Assign workspaces to monitors
 workspace $ws1 output primary

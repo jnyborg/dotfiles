@@ -19,56 +19,78 @@ Plugin 'easymotion/vim-easymotion' " Easy navigation with <Leader><Leader>w
 
 " Color schemes
 Plugin 'morhetz/gruvbox'
+Plugin 'dracula/vim', { 'name': 'dracula' }
+
 
 call vundle#end()
-filetype plugin indent on  " Enable file type detection.
 
-" --- General -------------------------------------------------------------------
+" --- Minimal vimrc  -------------------------------------------------------------------
+filetype plugin indent on      " Load plugins according to detected filetype.
+syntax on                      " Enable syntax highlighting.
 
-" Looks
-syntax on                 " Enable syntax highlighting.
-colorscheme gruvbox
-set background=dark       " Use colours that look good on a dark background.
-set number                " Precede each line with its line number.
-set cursorline            " highlight cursor line
-set ruler                 " Display current line number in corner
-set laststatus=2          " always display a status line
-set showcmd               " Show last command in status line
-set showmatch             " Show matching brackets.
-set shortmess=atI         " Shorten press ENTER to continue messages
+set autoindent                 " Indent according to previous line.
+set expandtab                  " Use spaces instead of tabs.
+set softtabstop=4              " Tab key indents by 4 spaces.
+set shiftwidth=4               " >> indents by 4 spaces.
+set shiftround                 " >> indents to next multiple of 'shiftwidth'.
+
+set backspace=indent,eol,start " Make backspace work as you would expect.
+set hidden                     " Switch between buffers without having to save first.
+set laststatus=2               " Always show statusline.
+set display=lastline           " Show as much as possible of the last line.
+
+set showmode                   " Show current mode in command-line.
+set showcmd                    " Show already typed keys when more are expected.
+
+set incsearch                  " Highlight while searching with / or ?.
+set hlsearch                   " Keep matches highlighted.
+
+set ttyfast                    " Faster redrawing.
+set lazyredraw                 " Only redraw when necessary.
+
+set splitbelow                 " Open new windows below the current window.
+set splitright                 " Open new windows right of the current window.
+
+set cursorline                 " Find the current line quickly.
+set wrapscan                   " Searches wrap around end-of-file.
+set report=0                   " Always report changed lines.
+set synmaxcol=200              " Only highlight the first 200 columns.
+
+set list                       " Show non-printable characters.
+if has('multi_byte') && &encoding ==# 'utf-8'
+  let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
+else
+  let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
+endif
 
 
-" Indentation settings
-set autoindent            " Copy indent from previous line
-set expandtab             " Replace tabs with spaces in Insert mode.
-set shiftwidth=4          " Spaces for each (auto)indent.
-set softtabstop=4         " Spaces for tabs when inserting <Tab> or <BS>.
-set tabstop=4             " Spaces that a <Tab> in file counts for.
+" Put all temporary files under the same directory.
+ " create directory if needed
+ if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
+     call mkdir($HOME.'/.vim/files')
+     call mkdir($HOME.'/.vim/files/backup')
+     call mkdir($HOME.'/.vim/files/swap')
+     call mkdir($HOME.'/.vim/files/undo')
+ endif
 
-" Disable backups and .swp files
-set noswapfile                 
-set nobackup
-set nowritebackup
+ " backup files
+ set backup
+ set backupdir   =$HOME/.vim/files/backup/
+ set backupext   =-vimbackup
+ set backupskip  =
+ " swap files
+ set directory   =$HOME/.vim/files/swap/
+ set updatecount =100
+ " undo files
+ set undofile
+ set undodir     =$HOME/.vim/files/undo/
+ " viminfo files
+ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
-" Search
-set hlsearch              " Highlight search pattern results.
-set ignorecase            " Ignore case of normal letters in a pattern.
-set smartcase             " Override ignorecase if pattern contains upper case.
-set incsearch             " Highlight search pattern as it is typed.
 
-" Misc
-set belloff=all           " Disable bell sound
-set ttyfast               " indicates our connection is fast
-set mouse=a               " enable mouse use in all modes
-set clipboard=unnamedplus " use system clipboard
-set formatoptions+=j      " Delete comment character when joining commented lines
-set hidden                " Don't complain about unsaved files when switching buffers
-set fsync
-set ttimeout
-set ttimeoutlen=50
+" --- My Settings ----------------------------------------------------------------------------- " 
+set relativenumber
 
-" VimWiki: default location.
-" let g:vimwiki_list = [{'path': '$HOME/Drive/vimwiki'}]
 
 
 " --- Mappings ----------------------------------------------------------------------------- " 

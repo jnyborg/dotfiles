@@ -53,3 +53,8 @@ alias python="python3"
 alias setngrok="python /home/jnyborg/git/dotfiles/scripts/set_beast_ngrok_port.py"
 alias autodeploy="bash /home/jnyborg/git/dotfiles/scripts/auto-deploy.sh"
 
+
+# Nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
