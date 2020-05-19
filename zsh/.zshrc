@@ -10,7 +10,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Pure prompt
 fpath+=("$HOME/.zsh/pure") 
-export PURE_PROMPT_SYMBOL=">"
+#export PURE_PROMPT_SYMBOL=">"
 autoload -U promptinit; promptinit
 prompt pure
 zstyle :prompt:pure:virtualenv color white  # set conda env color
@@ -58,3 +58,14 @@ alias autodeploy="bash /home/jnyborg/git/dotfiles/scripts/auto-deploy.sh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias vim=nvim
+
+# Fix colors in tmux
+export TERM=xterm-256color
+
+
+# Vim mode
+#bindkey -v
+#export KEYTIMEOUT=1
+

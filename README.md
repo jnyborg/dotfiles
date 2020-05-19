@@ -46,3 +46,5 @@ And install node
 ```
 nvm install --lts
 ```
+
+Use Roboto Mono NERD font.

@@ -1,0 +1,53 @@
+set surround
+set commentary
+set clipboard+=ideaput
+
+set ignorecase
+set smartcase
+
+set number
+set relativenumber
+
+set incsearch
+set hlsearch
+
+
+
+
+let mapleader = " "
+let maplocalleader = " "
+set timeoutlen=1000 ttimeoutlen=0
+" Run configurations
+" nnoremap <Leader>r :action Run<CR>
+" nnoremap <Leader>R :action ChooseRunConfiguration<CR>
+" nnoremap <Leader>d :action Debug<CR>
+" nnoremap <Leader>D :action ChooseDebugConfiguration<CR>
+" " File navigation
+" nnoremap <Leader>o :action GotoClass<CR>
+" nnoremap <Leader>O :action GotoFile<CR>
+" nnoremap <Leader>e :action RecentFiles<CR>
+
+nnoremap <Leader>R :source ~/.ideavimrc<CR>
+
+inoremap jk <Esc> 
+
+" Save file with <leader>-s
+nnoremap <Leader>s :w<CR>
+
+" Splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-w>q :action CloseContent<CR>
+
+" IDE actions
+" Use gq instead to reformat
+" noremap <Leader>f :action ReformatCode<CR>
+nnoremap <Leader>o :action OptimizeImports<CR>
+nnoremap <Leader>rn :action RenameElement<CR>
+nnoremap <Leader>u :action FindUsages<CR>
+nnoremap [g :action GotoPreviousError<CR>
+nnoremap ]g :action GotoNextError<CR>
+
+
