@@ -1,10 +1,5 @@
 {
-    "python.jediEnabled": false,
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintArgs": ["--generated-members=numpy.* ,torch.* ,cv2.* , cv.*", "--errors-only"],
-    "python.linting.flake8Enabled": false,
-    "python.linting.flake8Args": ["--ignore=E501"],
-    "python.formatting.provider": "black",
-    "diagnostic.checkCurrentLine": true
-
+    "python.jediEnabled": true,
+    "diagnostic.checkCurrentLine": true,
+    "python.linting.pylintArgs": ["--generated-members=numpy.* ,torch.* ,cv2.* , cv.*", "--errors-only"]
 }

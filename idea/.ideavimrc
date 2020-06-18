@@ -1,6 +1,6 @@
 set surround
 set commentary
-set clipboard+=ideaput
+set clipboard+=unnamedplus
 
 set ignorecase
 set smartcase
@@ -40,6 +40,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-w>q :action CloseContent<CR>
+nnoremap <C-q> :action CloseContent<CR>
 
 " IDE actions
 " Use gq instead to reformat
@@ -49,5 +50,6 @@ nnoremap <Leader>rn :action RenameElement<CR>
 nnoremap <Leader>u :action FindUsages<CR>
 nnoremap [g :action GotoPreviousError<CR>
 nnoremap ]g :action GotoNextError<CR>
+nnoremap gp :action ParameterInfo<CR>
 
 
