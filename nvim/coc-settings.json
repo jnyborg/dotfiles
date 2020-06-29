@@ -1,5 +1,10 @@
 {
     "python.jediEnabled": true,
     "diagnostic.checkCurrentLine": true,
-    "python.linting.pylintArgs": ["--generated-members=numpy.* ,torch.* ,cv2.* , cv.*", "--errors-only"]
+    "python.linting.pylintArgs": 
+    [
+        "--generated-members=numpy.* ,torch.* ,cv2.* , cv.*",
+        "--disable=C0115,C0103,C0116,R0913,R0914,C0301,C0114"
+    ],
+    "python.autoComplete.addBrackets": true
 }

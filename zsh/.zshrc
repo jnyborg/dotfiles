@@ -19,7 +19,6 @@ zstyle :prompt:pure:virtualenv color white  # set conda env color
 
 # Autojump
 source /usr/share/autojump/autojump.sh
-bindkey '^ ' autosuggest-accept
 
 
 # >>> conda initialize >>>
@@ -66,6 +65,29 @@ export TERM=xterm-256color
 
 
 # Vim mode
-#bindkey -v
-#export KEYTIMEOUT=1
+bindkey -v
+export KEYTIMEOUT=1
+
+# Restore useful standard bindings
+bindkey '^ ' autosuggest-accept
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^r' history-incremental-search-backward
+bindkey '^O' accept-line-and-down-history
+bindkey '^S' history-incremental-search-forward
+
+function zle-keymap-select () {
+    if [ $KEYMAP = vicmd ]; then
+        # Set block cursor
+        echo -ne '\e[1 q'
+    else
+        # Set beam cursor
+        echo -ne '\e[5 q'
+    fi
+}
+# Bind the callback
+zle -N zle-keymap-select
+
+# Beam cursor is default
+echo -ne '\e[5 q'
 

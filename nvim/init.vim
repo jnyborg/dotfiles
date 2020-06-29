@@ -2,17 +2,19 @@ call plug#begin(stdpath('data'))
 
 Plug 'junegunn/vim-easy-align'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'jiangmiao/auto-pairs'
-Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-highlightedyank'
-" Plug 'christoomey/vim-tmux-navigator'
 Plug 'vimwiki/vimwiki'
+Plug 'honza/vim-snippets'  " snippets to use with coc-snippets
+Plug 'sheerun/vim-polyglot'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tmhedberg/SimpylFold'  " folding for python
+
 
 
 " Looks
@@ -27,7 +29,7 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-" --- Color Theme --------------------------------------------------- " 
+" --- Color Theme --------------------------------------------------- "
 syntax on
 set termguicolors   " Enable true color support
 
@@ -39,7 +41,7 @@ set background=dark
 colorscheme gruvbox
 
 
-" --- General --------------------------------------------------- " 
+" --- General --------------------------------------------------- "
 set clipboard+=unnamedplus  " Yank to clipboard
 set cursorline  " Highlight current line, but only in active window
 augroup CursorLine
@@ -72,22 +74,22 @@ set nowrap
 
 
 
-" --- Key Mappings --------------------------------------------------- " 
+" --- Key Mappings --------------------------------------------------- "
 " Make space the leader key
-let mapleader = " " 
-let maplocalleader = " " 
+let mapleader = " "
+let maplocalleader = " "
 
 " Open .vimrc anywhere using <leader>vimrc
-map <leader>vimrc :tabe ~/.config/nvim/init.vim<cr> 
+map <leader>vimrc :tabe ~/.config/nvim/init.vim<cr>
 
 " Exit mode with jk
-inoremap jk <Esc> 
+inoremap jk <esc>
 
 " Save file with <leader>-w
 map <silent> <Leader>s :update<CR>
 
 " Remove highlighting
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+nnoremap <silent> <leader>l :nohl<CR>
 
 " Fast jump between splits
 nmap <c-h> <c-w>h
@@ -96,10 +98,11 @@ nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
 
 
-" --- Plugin Settings --------------------------------------------------- " 
+" --- Plugin Settings --------------------------------------------------- "
 " NerdTree
 map <silent> <C-n> :NERDTreeToggle<CR>
 let NERDTreeMinimalUI=1   " hide help
+let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
 
 
 " FZF
@@ -107,15 +110,20 @@ let NERDTreeMinimalUI=1   " hide help
 nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 
-" Polyglot 
+" Polyglot
+let g:python_highlight_all = 1
 let g:python_highlight_space_errors = 0   " Remove annoying red while typing
 
 
+" Folds
+set foldlevelstart=99
+
+
 " Airline
-let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#buffer_nr_show = 1
+" let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
 "
 " Highlighted yank
@@ -123,7 +131,7 @@ let g:highlightedyank_highlight_duration=100  " Just a short highlight
 
 
 
-" " --- coc.nvim recommended settings --------------------------------------------------- " 
+" --- coc.nvim recommended settings --------------------------------------------------- "
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -143,7 +151,8 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=yes
+" set signcolumn=yes
+set signcolumn=no
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

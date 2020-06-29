@@ -158,7 +158,11 @@ bar {
         urgent_workspace     $red $red $bg
     }
 }
+
+# hide_edge_borders both
+
 #end of bar section
+#
 
 #start of window title bars & borders section
 
@@ -171,7 +175,7 @@ bar {
 
 # blue gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $darkgray $darkgray $yellow $purple $darkgray
+client.focused          $blue $blue $darkgray $purple $darkgray
 client.focused_inactive $darkgray $darkgray $gray $purple $darkgray
 client.unfocused        $darkgray $darkgray $gray $purple $darkgray
 client.urgent           $red $red $white $red $red
@@ -293,7 +297,7 @@ exec --no-startup-id xss-lock -- i3lock --color "$bg-color"
 # Mode for power management
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock, mode "default"
+    bindsym l exec --no-startup-id i3lock --color "$bg-color", mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hibernate, mode "default"
