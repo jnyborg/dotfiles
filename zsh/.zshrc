@@ -76,18 +76,18 @@ bindkey '^r' history-incremental-search-backward
 bindkey '^O' accept-line-and-down-history
 bindkey '^S' history-incremental-search-forward
 
-function zle-keymap-select () {
-    if [ $KEYMAP = vicmd ]; then
-        # Set block cursor
-        echo -ne '\e[1 q'
-    else
-        # Set beam cursor
-        echo -ne '\e[5 q'
-    fi
-}
-# Bind the callback
-zle -N zle-keymap-select
+# function zle-keymap-select () {
+#     if [ $KEYMAP = vicmd ]; then
+#         # Set block cursor
+#         echo -ne '\e[1 q'
+#     else
+#         # Set beam cursor
+#         echo -ne '\e[5 q'
+#     fi
+# }
+# # Bind the callback
+# zle -N zle-keymap-select
 
-# Beam cursor is default
-echo -ne '\e[5 q'
+# # Beam cursor is default
+# echo -ne '\e[5 q'
 

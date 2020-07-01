@@ -6,7 +6,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'machakann/vim-highlightedyank'
 Plug 'vimwiki/vimwiki'
@@ -120,7 +119,7 @@ set foldlevelstart=99
 
 
 " Airline
-" let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 " let g:airline#extensions#tabline#buffer_nr_show = 1
