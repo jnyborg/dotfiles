@@ -1,5 +1,6 @@
 {
-    "python.jediEnabled": true,
+    "python.jediEnabled": false,
+    // Cursor on line highlight errors
     "diagnostic.checkCurrentLine": true,
     "python.linting.pylintArgs": 
     [

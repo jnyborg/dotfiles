@@ -14,8 +14,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tmhedberg/SimpylFold'  " folding for python
 
-
-
 " Looks
 Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
@@ -95,6 +93,9 @@ nmap <c-h> <c-w>h
 nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
+
+" Y yanks to end of line, consistent with similar commands
+map Y y$
 
 
 " --- Plugin Settings --------------------------------------------------- "
@@ -252,3 +253,7 @@ let g:coc_snippet_next = '<c-j>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
+
+" Highlight comments in json configuration file
+autocmd FileType json syntax match Comment +\/\/.\+$+
+

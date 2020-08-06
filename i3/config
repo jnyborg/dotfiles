@@ -284,15 +284,25 @@ exec fluxgui
 #exec pasystray  # audio
 # exec --no-startup-id clipit  # clipboard
 
-exec_always compton # Support for transparent windows
+# Fix screen tearing. 
+exec --no-startup-id compton --config ~/.config/compton.conf -b
+# Put this config in ~/.config/compton.conf
+# backend = "glx";
+#glx-no-stencil = true;
+#paint-on-overlay = true;
+#vsync = "opengl-swc";
+
+
+
+
 exec_always feh --bg-fill ~/git/dotfiles/i3/wallpaper-gradient.png # Set wallpaper
 
 # Swap between DK and US keyboard layouts
-exec setxkbmap us -option ctrl:nocaps # Default us keymap, caps as ctrp
+exec_always setxkbmap us -option ctrl:nocaps # Default us keymap, caps as ctrp
 bindsym $mod+space exec "(setxkbmap -query | grep -q 'layout:\s\+us') && setxkbmap dk -option ctrl:nocaps || setxkbmap us -option ctrl:nocaps"
 
 # Lock on screen close
-exec --no-startup-id xss-lock -- i3lock --color "$bg-color"
+# exec --no-startup-id xss-lock -- i3lock --color "$bg-color"
 
 # Mode for power management
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown

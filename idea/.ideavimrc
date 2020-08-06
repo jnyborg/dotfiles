@@ -1,5 +1,7 @@
 set surround
 set commentary
+
+" ==== General ====
 set clipboard+=unnamedplus
 
 set ignorecase
@@ -11,28 +13,24 @@ set relativenumber
 set incsearch
 set hlsearch
 
+set timeoutlen=1000 ttimeoutlen=0
 
 
-
+" ==== Key Binding ====
+" Space as leader
 let mapleader = " "
 let maplocalleader = " "
-set timeoutlen=1000 ttimeoutlen=0
-" Run configurations
-" nnoremap <Leader>r :action Run<CR>
-" nnoremap <Leader>R :action ChooseRunConfiguration<CR>
-" nnoremap <Leader>d :action Debug<CR>
-" nnoremap <Leader>D :action ChooseDebugConfiguration<CR>
-" " File navigation
-" nnoremap <Leader>o :action GotoClass<CR>
-" nnoremap <Leader>O :action GotoFile<CR>
-" nnoremap <Leader>e :action RecentFiles<CR>
 
+" Reload .ideavimrc
 nnoremap <Leader>R :source ~/.ideavimrc<CR>
 
-inoremap jk <Esc> 
+inoremap jk <Esc>
 
 " Save file with <leader>-s
 nnoremap <Leader>s :w<CR>
+
+" Turn of highlighting
+nnoremap <Leader>l :nohl<CR>
 
 " Splits
 nnoremap <C-h> <C-w>h
@@ -42,9 +40,23 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-w>q :action CloseContent<CR>
 nnoremap <C-q> :action CloseContent<CR>
 
-" IDE actions
-" Use gq instead to reformat
-" noremap <Leader>f :action ReformatCode<CR>
+" Navigate tabs faster
+nnoremap [t gT
+nnoremap ]t gt
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :action GoToLastTab<cr>
+
+" ==== IDE actions ====
+" Also possible to use gq instead to reformat
+noremap <Leader>f :action ReformatCode<CR>
 nnoremap <Leader>o :action OptimizeImports<CR>
 nnoremap <Leader>rn :action RenameElement<CR>
 nnoremap <Leader>u :action FindUsages<CR>
