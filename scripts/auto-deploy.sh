@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script to auto upload code changes to server.
-# 
+# Add to .bashrc by e.g. alias autodeploy="bash /path/to/this/file/auto-deploy.sh"
 # Requires the inotify-tools package 
 
 project_name=${PWD##*/}
